@@ -11,7 +11,7 @@ SRC_INCLUDE = include
 INCLUDE = -I ${SRC_INCLUDE}
 
 TEST_DIR = test
-TEST_SRCS = $(SRC_DIR)/*.cpp
+TEST_SRCS = $(TEST_DIR)/*.cpp
 
 MEMCHECK_RESULTS = ValgrindOut.xml
 
