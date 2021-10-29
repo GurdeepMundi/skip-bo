@@ -27,7 +27,7 @@ coverage:
       expire_in: 14 days
 
 memcheckTest:
-   stage: quality1
+   stage: quality
    script:
       - make memcheck-test
 
