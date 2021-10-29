@@ -1,12 +1,17 @@
 CXX=g++
 CXXFLAGS= -std=c++11 -g -fprofile-arcs -ftest-coverage
 
+LINKFLAGS=
+
 SRC_DIR = src
-PROJECT_SRC_DIR = src/project
 SRCS = $(SRC_DIR)/*.cpp
+GAME_MAIN = $(SRC_DIR)/game/main.cpp
 
 SRC_INCLUDE = include
 INCLUDE = -I ${SRC_INCLUDE}
+
+TEST_DIR = test
+TEST_SRCS = $(SRC_DIR)/*.cpp
 
 MEMCHECK_RESULTS = ValgrindOut.xml
 
@@ -14,17 +19,10 @@ STATIC_ANALYSIS = cppcheck
 
 STYLE_CHECK = cpplint.py
 
-DOXY_DIR = docs/code
-
 STATIC_RESULTS = CppCheckResults.xml
-
-BROWSER = firefox
 
 PROGRAM = cardGame
 PROGRAM_TEST = testGame
-
-# Default goal, used by Atom for local compilation
-.DEFAULT_GOAL := $(PROGRAM)
 
 # default rule for compiling .cc to .o
 %.o: %.cpp
@@ -32,20 +30,42 @@ PROGRAM_TEST = testGame
 
 .PHONY: clean
 clean:
-	rm -rf *~ $(SRC)/*.o	*.gcov *.gcda *.gcno $(PROGRAM) $(PROGRAM).exe
+	rm -rf *~ $(SRC)/*.o	$(PROGRAM)
 
-$(PROGRAM): $(SRC_DIR) $(PROJECT_SRC_DIR)
-	$(CXX) $(CXXFLAGS) -o $(PROGRAM) $(INCLUDE) \
-	$(SRC_DIR)/*.cpp $(PROJECT_SRC_DIR)/*.cpp
+$(PROGRAM): $(SRCS) $(GAME_MAIN)
+	$(CXX) $(CXXFLAGS) -o $(PROGRAM) -I $(SRC_INCLUDE) $(SRCS) $(GAME_MAIN) $(LINKFLAGS)
 
-memcheck: $(PROGRAM)
-	valgrind --tool=memcheck --leak-check=yes --xml=yes --xml-file=$(MEMCHECK_RESULTS) $(PROGRAM)
+$(PROGRAM_TEST): $(SRCS) $(TEST_SRCS)
+	$(CXX) $(CXXFLAGS) -o $(PROGRAM_TEST) -I $(SRC_INCLUDE) $(SRCS) $(TEST_SRCS) $(LINKFLAGS)
 
-static: ${SRC_DIR}
-	cppcheck --verbose --enable=all --xml ${SRC_DIR} ${INCLUDE} --suppress=missingInclude
+.PHONY: coverage
+coverage: $(PROGRAM_TEST)
+	$(PROGRAM_TEST)
+	# Determine code coverage
+	$(LCOV) --capture --gcov-tool $(GCOV) --directory . --output-file $(COVERAGE_RESULTS) --rc lcov_branch_coverage=1
+	# Only show code coverage for the source code files (not library files)
+	$(LCOV) --extract $(COVERAGE_RESULTS) */*/$(SRC_DIR)/* -o $(COVERAGE_RESULTS)
+	#Generate the HTML reports
+	genhtml $(COVERAGE_RESULTS) --output-directory $(COVERAGE_DIR)
+	#Remove all of the generated files from gcov
+	rm -f *.gcda *.gcno
 
-style: ${SRC_INCLUDE} ${SRC_DIR}
-	${STYLE_CHECK} $(SRC_INCLUDE)/* ${SRC_DIR}/*
+.PHONY: memcheck-game
+memcheck-game: $(PROGRAM)
+	valgrind --tool=memcheck --leak-check=full --error-exitcode=1 $(PROGRAM)
 
+.PHONY: memcheck-test
+memcheck-test: $(PROGRAM_TEST)
+	valgrind --tool=memcheck --leak-check=full --error-exitcode=1 $(PROGRAM_TEST)
+
+.PHONY: static
+static: ${SRC_DIR} $(TEST_DIR)
+	${STATIC_ANALYSIS} --verbose --enable=all ${SRC_DIR} ${TEST_DIR} ${SRC_INCLUDE} --suppress=missingInclude --error-exitcode=1
+
+.PHONY: style
+style: ${SRC_DIR} ${GTEST_DIR} ${SRC_INCLUDE} ${PROJECT_SRC_DIR}
+	${STYLE_CHECK} ${SRC_DIR}/* ${TEST_DIR}/* ${SRC_INCLUDE}/* ${GAME_MAIN}
+
+.PHONY: docs
 docs: ${SRC_INCLUDE}
 	doxygen $(DOXY_DIR)/doxyfile
