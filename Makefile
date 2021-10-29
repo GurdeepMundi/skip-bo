@@ -24,6 +24,8 @@ STATIC_RESULTS = CppCheckResults.xml
 PROGRAM = cardGame
 PROGRAM_TEST = testGame
 
+DOXY_DIR = docs/code
+
 # default rule for compiling .cc to .o
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
