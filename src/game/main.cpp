@@ -19,7 +19,6 @@
 #include <stack>
 
 int main() {
-
     CardGameController a;
     a.gameStart();
     char c;

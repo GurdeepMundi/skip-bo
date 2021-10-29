@@ -1,7 +1,7 @@
 CXX=g++
 CXXFLAGS= -std=c++11 -g -fprofile-arcs -ftest-coverage
 
-LINKFLAGS=
+LINKFLAGS= -lgtest
 
 SRC_DIR = src
 SRCS = $(SRC_DIR)/*.cpp
@@ -23,6 +23,10 @@ STATIC_RESULTS = CppCheckResults.xml
 
 PROGRAM = cardGame
 PROGRAM_TEST = testGame
+GCOV = gcov
+LCOV = lcov
+COVERAGE_RESULTS = results.coverage
+COVERAGE_DIR = coverage
 
 DOXY_DIR = docs/code
 
