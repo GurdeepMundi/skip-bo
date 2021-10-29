@@ -1,9 +1,11 @@
 # Skip-Bo
 
-Group members:
-Brent Hawkings
-Cody Hodge
-Julie Wojtiw-quo
+## Developers:
+ - Brent Hawkings
+ - Cody Hodge
+ - Julie Wojtiw-quo
+
+## Testers
 
 
 
