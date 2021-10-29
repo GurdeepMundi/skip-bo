@@ -1,9 +1,8 @@
 CXX=g++
 CXXFLAGS= -std=c++11 -g -fprofile-arcs -ftest-coverage
 
-LINKFLAGS=
-
 SRC_DIR = src
+PROJECT_SRC_DIR = src/project
 SRCS = $(SRC_DIR)/*.cpp
 
 SRC_INCLUDE = include
@@ -15,6 +14,8 @@ STATIC_ANALYSIS = cppcheck
 
 STYLE_CHECK = cpplint.py
 
+DOXY_DIR = docs/code
+
 STATIC_RESULTS = CppCheckResults.xml
 
 BROWSER = firefox
@@ -22,16 +23,20 @@ BROWSER = firefox
 PROGRAM = cardGame
 PROGRAM_TEST = testGame
 
+# Default goal, used by Atom for local compilation
+.DEFAULT_GOAL := $(PROGRAM)
+
 # default rule for compiling .cc to .o
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
-	rm -rf *~ $(SRC)/*.o	$(PROGRAM)
+	rm -rf *~ $(SRC)/*.o	*.gcov *.gcda *.gcno $(PROGRAM) $(PROGRAM).exe
 
-$(PROGRAM): $(SRCS)
-	$(CXX) $(CXXFLAGS) -o $(PROGRAM) -I $(SRC_INCLUDE) $(SRCS) $(LINKFLAGS)
+$(PROGRAM): $(SRC_DIR) $(PROJECT_SRC_DIR)
+	$(CXX) $(CXXFLAGS) -o $(PROGRAM) $(INCLUDE) \
+	$(SRC_DIR)/*.cpp $(PROJECT_SRC_DIR)/*.cpp
 
 memcheck: $(PROGRAM)
 	valgrind --tool=memcheck --leak-check=yes --xml=yes --xml-file=$(MEMCHECK_RESULTS) $(PROGRAM)
@@ -43,4 +48,4 @@ style: ${SRC_INCLUDE} ${SRC_DIR}
 	${STYLE_CHECK} $(SRC_INCLUDE)/* ${SRC_DIR}/*
 
 docs: ${SRC_INCLUDE}
-	doxygen
+	doxygen $(DOXY_DIR)/doxyfile
