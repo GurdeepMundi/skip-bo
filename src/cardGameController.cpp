@@ -8,7 +8,7 @@
 #include <iostream>
 
 
-CardGameController::CardGameController(InputView* iv) : userInput(iv){ }
+CardGameController::CardGameController(InputView* iv) : userInput(iv) { }
 
 CardGameController::~CardGameController() {
   delete userInput;
