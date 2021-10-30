@@ -11,6 +11,7 @@
 #include "CardModel.h"
 #include "ArrPileModel.h"
 #include "Player.h"
+#include "InputView.h"
 
 /**
 * Runs and controlls the entire card game
@@ -20,7 +21,7 @@ class CardGameController {
     /**
     * A card game (Constructor)
     */
-    CardGameController();
+    CardGameController(InputView*);
     /**
     * Destructor
     */
@@ -59,5 +60,8 @@ class CardGameController {
     void help(int);
 
     void leave(int);
+
+ private:
+    InputView* userInput;
 };
 #endif

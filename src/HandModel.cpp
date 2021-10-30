@@ -6,7 +6,10 @@ HandModel::HandModel() {
   numberOfCards = 0;
 }
 
-HandModel::~HandModel() {}
+HandModel::~HandModel() {
+  for (CardModel* c : gameHand)
+    delete c;
+}
 
 std::vector<CardModel*> HandModel::GetHand() {
   return gameHand;
@@ -27,7 +30,5 @@ int HandModel::getNumberOfCards() {
 }
 
 CardModel* HandModel::useCard(int num) {
-  CardModel* c = new CardModel (0);
-  c = gameHand[num];
-  return c;
+  return gameHand[num];
 }

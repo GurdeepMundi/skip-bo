@@ -66,7 +66,7 @@ class Player {
 
       void addToStock(DeckModel*);
 
-      int handsize();
+      unsigned int handsize();
 
       int stocksize();
 

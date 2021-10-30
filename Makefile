@@ -21,6 +21,7 @@ STYLE_CHECK = cpplint.py
 
 STATIC_RESULTS = CppCheckResults.xml
 
+PROGRAM_DIR = skip-bo
 PROGRAM = cardGame
 PROGRAM_TEST = testGame
 GCOV = gcov
@@ -36,7 +37,7 @@ DOXY_DIR = docs/code
 
 .PHONY: clean
 clean:
-	rm -rf *~ $(SRC)/*.o	$(PROGRAM)
+	rm -rf *~ $(SRC)/*.o	$(PROGRAM) $(COVERAGE_DIR) $(COVERAGE_RESULTS) *.gcda *.gcno $(PROGRAM_TEST) $(DOXY_DIR)/src/html
 
 $(PROGRAM): $(SRCS) $(GAME_MAIN)
 	$(CXX) $(CXXFLAGS) -o $(PROGRAM) -I $(SRC_INCLUDE) $(SRCS) $(GAME_MAIN) $(LINKFLAGS)
@@ -50,7 +51,7 @@ coverage: $(PROGRAM_TEST)
 	# Determine code coverage
 	$(LCOV) --capture --gcov-tool $(GCOV) --directory . --output-file $(COVERAGE_RESULTS) --rc lcov_branch_coverage=1
 	# Only show code coverage for the source code files (not library files)
-	$(LCOV) --extract $(COVERAGE_RESULTS) */*/$(SRC_DIR)/* -o $(COVERAGE_RESULTS)
+	$(LCOV) --extract $(COVERAGE_RESULTS) */$(PROGRAM_DIR)/$(SRC_DIR)/* -o $(COVERAGE_RESULTS)
 	#Generate the HTML reports
 	genhtml $(COVERAGE_RESULTS) --output-directory $(COVERAGE_DIR)
 	#Remove all of the generated files from gcov

@@ -19,7 +19,7 @@
 #include <stack>
 
 int main() {
-    CardGameController a;
+    CardGameController a(new InputView());
     a.gameStart();
     char c;
     std::cin >> c;

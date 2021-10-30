@@ -45,7 +45,6 @@ CardModel* ArrPileModel::usediscard(int num) {
     return c;
   } else {
     return piles[num]->getTopCard();
-    popTopcard(num);
   }
 }
 

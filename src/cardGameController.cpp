@@ -8,9 +8,11 @@
 #include <iostream>
 
 
-CardGameController::CardGameController() { }
+CardGameController::CardGameController(InputView* iv) : userInput(iv){ }
 
-CardGameController::~CardGameController() { }
+CardGameController::~CardGameController() {
+  delete userInput;
+}
 
 void CardGameController::gameStart() {
   Player* p1 = new Player;
@@ -59,7 +61,6 @@ DeckModel* deck, ArrPileModel* build) {
   //bool computer specifies whose discard pile is shown,
   //false for the player, true for computer
   p->displayDiscard(false);
-  std::cout << "\n Stock" << std::endl;
   p->displayStock();
   std::cout << " 10" << std::endl;
   std::cout << "\n         Hand" << std::endl;
@@ -74,10 +75,9 @@ DeckModel* deck, ArrPileModel* build) {
   std::cout << "\n\n************************ Opponent Turn " <<
   "********************* \n\n";
   std::cout << "\nPlaying Stock Cards \n\n";
-  CardModel* card = new CardModel(0);
   bool a = false;
   // plays stock
-    card = p->useStock();
+    CardModel* card = p->useStock();
     //picks one of the piles
   for (int i = 0; i < 4; i++) {
     a = addingToPiles(build, card, i);
@@ -112,16 +112,12 @@ DeckModel* deck, ArrPileModel* build) {
 void CardGameController::playCards(Player* p, Player* p2,
 DeckModel* deck, ArrPileModel* build) {
   bool gate = false;
-  int input;
   deck->checkSize();
   dealHand(p, deck);
   do {
     checkBuildSize(build, deck);
     displayBoard(p, p2, deck, build);
-    std::cout << "\n\nPick a option to play: \n 1-" << p->handsize();
-    std::cout << " hand cards \n 6-9 discard pile \n 10 stock pile";
-    std::cout << " \n 11 End turn \n 12 Help\n 13 Exit\n" << std::endl;
-    std::cin >> input;
+    int input = userInput->options(p->handsize());
     gate = discardingCard(p, input);
     handPlay(p, build, input);
     discardPlay(p, build, input);
@@ -138,20 +134,15 @@ void CardGameController::dealHand(Player* p, DeckModel* deck) {
 }
 
 void CardGameController::handPlay(Player* p, ArrPileModel* build, int input) {
-CardModel* card = new CardModel(0);
   DisplayView display;
-  bool a = false;
+
   int b = input - 1;
-  int input2;
   if (input <= p->handsize() && input > 0) {
     input = input - 1;
-    card = p->useCard(input);
+    CardModel* card = p->useCard(input);
     //picks one of the piles
-    std::cout << "Card value" << std::endl;
-    display.DisplayCard(card);
-    std::cout << "\npick a pile (1-4)" << std::endl;
-    std::cin >> input2;
-    a = addingToPiles(build, card, input2);
+    int input2 = userInput->selectBuildPile();
+    bool a = addingToPiles(build, card, input2);
     if (a == true) {
       p->removeCard(b);
     }
@@ -160,22 +151,15 @@ CardModel* card = new CardModel(0);
 
 void CardGameController::discardPlay(Player* p,
 ArrPileModel* build, int input) {
-  CardModel* card = new CardModel(0);
   DisplayView display;
-  bool a = false;
-  int pilenum, cardvalue;
   if (input <= 9 && input >= 6) {
-    cardvalue = input - 6;
-    card = p->usediscard(cardvalue);
+    bool a = false;
+    int cardvalue = input - 6;
+    CardModel* card = p->usediscard(cardvalue);
     //picks one of the piles
-    std::cout << "Card value" << std::endl;
-    display.DisplayCard(card);
     if (card->getNumber() != 20) {
-      std::cout << "\npick a pile (1-4)" << std::endl;
-      std::cin >> pilenum;
-      //std::cout << "start3" << std::endl;
+      int pilenum = userInput->selectBuildPile();
       a = addingToPiles(build, card, pilenum);
-      //  std::cout << "start4" << std::endl;
     }
     if (a == true) {
       p->deleteDiscardCard(cardvalue);
@@ -184,17 +168,13 @@ ArrPileModel* build, int input) {
 }
 
 void CardGameController::stockPlay(Player* p, ArrPileModel* build, int input) {
-  CardModel* card = new CardModel(0);
   bool a = false;
   DisplayView display;
   if (input == 10) {
-    card = p->useStock();
+    CardModel* card = p->useStock();
     //picks one of the piles
-    std::cout << "Card value" << std::endl;
-    display.DisplayCard(card);
-    std::cout << "\npick a pile (1-4)" << std::endl;
-    std::cin >> input;
-    a = addingToPiles(build, card, input);
+    unsigned int pilenum = userInput->selectBuildPile();
+    a = addingToPiles(build, card, pilenum);
   }
   if (a == true) {
     p->deleteStockCard();
@@ -202,21 +182,16 @@ void CardGameController::stockPlay(Player* p, ArrPileModel* build, int input) {
 }
 
 bool CardGameController::discardingCard(Player* p, int input) {
-  CardModel* card = new CardModel(0);
-  int carddelete, pilenum, cardvalue;
   if (input == 11) {
     if (p->handsize() == 0) {
       return true;
     } else {
-      std::cout << "pick a card to discard from hand 1-" << p->handsize();
-      std::cout << std::endl;
-      std::cin >> cardvalue;
+      int cardvalue = userInput->discardChoice(p->handsize());
       if (cardvalue <= p->handsize() && cardvalue > 0) {
-        carddelete = cardvalue - 1;
-        card = p->useCard(carddelete);
+        int carddelete = cardvalue - 1;
+        CardModel* card = p->useCard(carddelete);
         //picks one of the piles
-        std::cout << "pick a discard pile (6-9)" << std::endl;
-        std::cin >> pilenum;
+        int pilenum = userInput->discardPile();
         discardPilesPick(p, card, pilenum);
         p->removeCard(carddelete);
         return true;
@@ -328,10 +303,6 @@ void CardGameController::help(int input) {
 
 void CardGameController::leave(int input) {
   if (input == 13) {
-    std::cout << "\n \nThanks for playing \nHit anything to exit ";
-    std::cout << "the game" << std::endl;
-    char c;
-    std::cin >> c;
-    exit(EXIT_SUCCESS);
+    userInput->exitGame();
   }
 }

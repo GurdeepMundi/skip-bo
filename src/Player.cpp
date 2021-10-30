@@ -34,7 +34,7 @@ void Player::addToStock(DeckModel* deck) {
   }
 }
 
-int Player::handsize() {
+unsigned int Player::handsize() {
   return hand->getNumberOfCards();
 }
 
@@ -55,9 +55,7 @@ CardModel* Player::usediscard(int num) {
 }
 
 CardModel* Player::useStock() {
-  CardModel* card = new CardModel(0);
-  card = stock->getTopCard();
-  return card;
+  return stock->getTopCard();
 }
 
 void Player::usingDiscard(CardModel* card, int num) {
@@ -87,6 +85,7 @@ HandModel* Player::returnHand() {
 
 void Player::displayStock() {
   StockView a;
+  std::cout << "\n Stock" << std::endl;
   a.DisplayStock(returnStock());
 }
 

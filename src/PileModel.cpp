@@ -4,21 +4,24 @@
 
 PileModel::PileModel() {}
 
-PileModel::~PileModel() {}
+PileModel::~PileModel() {
+  while (!currentPile.empty()) {
+     CardModel* c = currentPile.top();
+     currentPile.pop();
+     delete c;
+  }
+}
 
 CardModel* PileModel::getTopCard() {
   return currentPile.top();
 }
 
 int PileModel::getTopNum() {
-  int temp;
-      CardModel* c = new CardModel(0);
-      if (currentPile.size() == 0) {
-          return 0;
-      } else {
-          c = getTopCard();
-      return c->getNumber();
-      }
+  if (currentPile.size() == 0) {
+      return 0;
+  } else {
+      return getTopCard()->getNumber();
+  }
 }
 
 void PileModel::addCard(CardModel* c) {
