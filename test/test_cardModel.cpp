@@ -31,3 +31,10 @@ TEST_F(CardModelTest, test_setNumber) {
    ASSERT_FALSE(c->getNumber() == testInt);
    ASSERT_TRUE(c->getNumber() != testInt);
 }
+
+TEST_F(CardModelTest, test_isSkipBo) {
+  c->setNumber(0);
+  ASSERT_TRUE(c->isSkipBo(this));
+  c->setNumber(1);
+  ASSERT_FALSE(c->isSkipBo(this));
+}
