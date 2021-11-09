@@ -42,7 +42,7 @@ TEST_F(PileModelTest, DISABLED_test_addCard) {
   delete newCard;
 }
 
-TEST_F(PileModelTest, experiment) {
+TEST_F(PileModelTest, DISABLED_experiment) {
   CardModel* cc = new CardModel(2);
   delete cc;
 }
