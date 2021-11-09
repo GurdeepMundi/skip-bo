@@ -38,4 +38,5 @@ TEST_F(PileModelTest, test_addCard) {
   p->addCard(newCard);
   EXPECT_EQ(p->getSize(), 2);
   EXPECT_EQ(p->getTopNum(), newCard->getNumber());
+  delete newCard;
 }
