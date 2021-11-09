@@ -11,13 +11,13 @@
 
 class CardModelTest : public testing::Test {
  protected:
-   CardModel* c;
-   void SetUp() override {
-      c = new CardModel(1);
-   }
-   void TearDown() {
-      delete c;
-   }
+  CardModel* c;
+  void SetUp() override {
+    c = new CardModel(1);
+  }
+  void TearDown() {
+    delete c;
+  }
 };
 
 TEST_F(CardModelTest, test_setNumber) {
