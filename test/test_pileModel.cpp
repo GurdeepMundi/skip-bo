@@ -14,7 +14,7 @@ class PileModelTest: public ::testing::Test {
  public:
   void SetUp() {
     p = new PileModel();
-    c = new CardModel();
+    c = new CardModel(0);
   }
   void TearDown() {
     delete p;
