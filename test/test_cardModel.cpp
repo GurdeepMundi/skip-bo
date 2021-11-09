@@ -34,7 +34,7 @@ TEST_F(CardModelTest, test_setNumber) {
 
 TEST_F(CardModelTest, test_isSkipBo) {
   c->setNumber(0);
-  ASSERT_TRUE(c->isSkipBo(c));
+  ASSERT_TRUE(c->isSkipBo(*c));
   c->setNumber(1);
-  ASSERT_FALSE(c->isSkipBo(c));
+  ASSERT_FALSE(c->isSkipBo(*c));
 }
