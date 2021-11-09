@@ -18,6 +18,7 @@ class PileModelTest: public ::testing::Test {
   }
   void TearDown() {
     delete p;
+    delete c;
   }
   PileModel* p;
   CardModel* c;
