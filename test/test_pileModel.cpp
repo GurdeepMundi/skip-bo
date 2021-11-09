@@ -23,7 +23,7 @@ class PileModelTest: public ::testing::Test {
   PileModel* p;
   CardModel* c;
 };
-
+/*
 TEST_F(PileModelTest, test_Constructor) {
   EXPECT_EQ(p->getSize(), 0);
 }
@@ -32,7 +32,7 @@ TEST_F(PileModelTest, test_getsize) {
   p->addCard(c);
   EXPECT_EQ(p->getSize(), 1);
 }
-/*
+
 TEST_F(PileModelTest, DISABLED_test_addCard) {
   CardModel* newCard = new CardModel(3);
   p->addCard(c);
