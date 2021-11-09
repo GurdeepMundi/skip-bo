@@ -1,7 +1,7 @@
 CXX=g++
 CXXFLAGS= -std=c++11 -g -fprofile-arcs -ftest-coverage
 
-LINKFLAGS= -lgtest
+LINKFLAGS= -lgtest -lpthread -lgmock
 
 SRC_DIR = src
 SRCS = $(SRC_DIR)/*.cpp
