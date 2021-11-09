@@ -33,11 +33,16 @@ TEST_F(PileModelTest, test_getsize) {
   EXPECT_EQ(p->getSize(), 1);
 }
 
-TEST_F(PileModelTest, test_addCard) {
+TEST_F(PileModelTest, DISABLED_test_addCard) {
   CardModel* newCard = new CardModel(3);
   p->addCard(c);
   p->addCard(newCard);
   EXPECT_EQ(p->getSize(), 2);
   EXPECT_EQ(p->getTopNum(), newCard->getNumber());
   delete newCard;
+}
+
+TEST_F(PileModelTest, experiment) {
+  CardModel* cc = new CardModel(2);
+  delete cc;
 }
