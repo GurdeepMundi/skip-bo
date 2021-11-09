@@ -21,15 +21,14 @@ class CardModelTest : public testing::Test {
 };
 
 TEST_F(CardModelTest, test_setNumber) {
-   int testInt = 2;
-   c->setNumber(testInt);
-   ASSERT_TRUE(c->getNumber() == testInt);
-   ASSERT_FALSE(c->getNumber() != testInt);
-
-   // Verify inverse after changing test value
-   c->setNumber(testInt + 1);
-   ASSERT_FALSE(c->getNumber() == testInt);
-   ASSERT_TRUE(c->getNumber() != testInt);
+  int testInt = 2;
+  c->setNumber(testInt);
+  ASSERT_TRUE(c->getNumber() == testInt);
+  ASSERT_FALSE(c->getNumber() != testInt);
+  // Verify inverse after changing test value
+  c->setNumber(testInt + 1);
+  ASSERT_FALSE(c->getNumber() == testInt);
+  ASSERT_TRUE(c->getNumber() != testInt);
 }
 
 TEST_F(CardModelTest, test_isSkipBo) {
