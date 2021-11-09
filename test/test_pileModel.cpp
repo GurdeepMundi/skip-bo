@@ -12,11 +12,12 @@
 class PileModelTest: public ::testing::Test {
  public:
   void SetUp() {
-    PileModel* p = new PileModel();
+    p = new PileModel();
   }
   void TearDown() {
     delete p;
   }
+  PileModel* p;
 };
 
 TEST_F (PileModelTest, test_Constructor) {
