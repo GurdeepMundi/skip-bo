@@ -10,7 +10,7 @@
 #include "gtest/gtest.h"
 
 class CardModelTest : public testing::Test {
-protected:
+ protected:
    CardModel* c;
    void SetUp() override {
       c = new CardModel(1);
