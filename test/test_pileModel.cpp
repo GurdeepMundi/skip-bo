@@ -31,3 +31,11 @@ TEST_F(PileModelTest, test_getsize) {
   p->addCard(c);
   EXPECT_EQ(p->getSize(), 1);
 }
+
+TEST_F(PileModelTest, test_addCard) {
+  CardModel* newCard = new CardModel(3);
+  p->addCard(c);
+  p->addCard(newCard);
+  EXPECT_EQ(p->getSize(), 2);
+  EXPECT_EQ(p->getTopNum(), newCard->getNumber());
+}
