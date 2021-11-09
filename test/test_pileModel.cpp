@@ -8,3 +8,17 @@
 
 #include <PileModel.h>
 #include <gtest/gtest.h>
+
+class PileModelTest: public ::testing::Test {
+ public:
+  void SetUp() {
+    PileModel* p = new PileModel();
+  }
+  void TearDown() {
+    delete p;
+  }
+};
+
+TEST_F (PileModelTest, test_Constructor) {
+  EXPECT_EQ(p->getSize(), 0);
+}
