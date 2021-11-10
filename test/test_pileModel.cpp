@@ -13,14 +13,11 @@
 class PileModelTest: public testing::Test {
 protected:
    PileModel* p;
-   CardModel* c;
   void SetUp() override{
     p = new PileModel();
-    c = new CardModel(0);
   }
   void TearDown() {
     delete p;
-    delete c;
   }
 };
 
@@ -29,8 +26,11 @@ TEST_F(PileModelTest, test_Constructor) {
 }
 
 TEST_F(PileModelTest, test_getsize) {
+  CardModel* c;
+  c = new CardModel(0);
   p->addCard(c);
   EXPECT_EQ(p->getSize(), 1);
+  delete c;
 }
 /*
 TEST_F(PileModelTest, DISABLED_test_addCard) {
