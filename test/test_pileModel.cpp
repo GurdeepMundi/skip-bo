@@ -10,8 +10,8 @@
 #include <CardModel.h>
 #include <gtest/gtest.h>
 
-class PileModelTest: public ::testing::Test {
- public:
+class PileModelTest: public testing::Test {
+ prohibited:
    PileModel* p;
    CardModel* c;
   void SetUp() {
