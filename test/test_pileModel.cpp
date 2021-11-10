@@ -17,7 +17,7 @@ protected:
     p = new PileModel();
   }
   void TearDown() {
-    delete p;
+  //  delete p;
   }
 };
 
@@ -30,7 +30,6 @@ TEST_F(PileModelTest, test_getsize) {
   c = new CardModel(0);
   p->addCard(c);
   EXPECT_EQ(p->getSize(), 1);
-  delete c;
 }
 /*
 TEST_F(PileModelTest, DISABLED_test_addCard) {
