@@ -12,6 +12,8 @@
 
 class PileModelTest: public ::testing::Test {
  public:
+   PileModel* p;
+   CardModel* c;
   void SetUp() {
     p = new PileModel();
     c = new CardModel(0);
@@ -20,8 +22,6 @@ class PileModelTest: public ::testing::Test {
     delete p;
     delete c;
   }
-  PileModel* p;
-  CardModel* c;
 };
 
 TEST_F(PileModelTest, test_Constructor) {
