@@ -11,10 +11,10 @@
 #include <gtest/gtest.h>
 
 class PileModelTest: public testing::Test {
-protected:
-   PileModel* p;
-  void SetUp() override{
-    p = new PileModel();
+ protected:
+  PileModel* p;
+  void SetUp() override {
+  p = new PileModel();
   }
   void TearDown() {
     delete p;
@@ -30,6 +30,7 @@ TEST_F(PileModelTest, test_getsize) {
   c = new CardModel(0);
   p->addCard(c);
   EXPECT_EQ(p->getSize(), 1);
+  //not deleting c because gives segfault otherwise
 }
 /*
 TEST_F(PileModelTest, DISABLED_test_addCard) {
