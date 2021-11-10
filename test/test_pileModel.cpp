@@ -14,7 +14,7 @@ class PileModelTest: public testing::Test {
 protected:
    PileModel* p;
    CardModel* c;
-  void SetUp() {
+  void SetUp() override{
     p = new PileModel();
     c = new CardModel(0);
   }
