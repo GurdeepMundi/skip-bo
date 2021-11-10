@@ -11,7 +11,7 @@
 #include <gtest/gtest.h>
 
 class PileModelTest: public testing::Test {
- prohibited:
+protected:
    PileModel* p;
    CardModel* c;
   void SetUp() {
