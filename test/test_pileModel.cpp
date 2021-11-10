@@ -17,7 +17,7 @@ protected:
     p = new PileModel();
   }
   void TearDown() {
-  //  delete p;
+    delete p;
   }
 };
 
