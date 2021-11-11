@@ -32,10 +32,9 @@ TEST_F(DeckModelTest, test_getDeck) {
     for (int i = 0; i < d->getDeck().size(); i++) {
         test.push_back(d->getDeck()[i]);
     }
-
-    // verify while checking inverse of assignment 
+    // verify while checking inverse of assignment
     for (int i = 0; i < test.size(); i++) {
-	ASSERT_TRUE(test[i]->getNumber() == d->getDeck()[i]->getNumber());
+        ASSERT_TRUE(test[i]->getNumber() == d->getDeck()[i]->getNumber());
     }
 }
 
