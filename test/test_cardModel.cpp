@@ -15,8 +15,9 @@ class CardModelTest : public testing::Test {
   void SetUp() override {
     c = new CardModel(1);
   }
-  void TearDown() {
+  void TearDown() override {
     delete c;
+    c = NULL;
   }
 };
 
