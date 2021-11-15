@@ -57,6 +57,17 @@ TEST_F(PlayerTest, test_setComputerPlayer) {
     ASSERT_TRUE(p1->isComputerPlayer());
 }
 
-/*TEST_F(PlayerTest, test_addToStock) {
+TEST_F(PlayerTest, test_addToStock) {
+    ASSERT_EQ(p1->stocksize(), 0);
     p1->addToStock(d);
-    }*/
+    ASSERT_NE(p1->stocksize(), 0);
+}
+
+TEST_F(PlayerTest, test_handsize) {
+    ASSERT_EQ(p1->handsize(), 0);
+}
+
+TEST_F(PlayerTest, test_stocksize) {
+    ASSERT_EQ(p1->stocksize(), 0);
+}
+
