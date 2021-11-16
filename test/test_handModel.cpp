@@ -25,11 +25,19 @@ class HandModelTest : public testing::Test {
 
 TEST_F(HandModelTest, test_Constructor) {
   ASSERT_TRUE(h->getNumberOfCards() == 0);
-  ASSERT_TRUE(h->getHand().size() == 0);
+  ASSERT_TRUE(h->GetHand().size() == 0);
 }
 
-TEST_F(HandModelTest, test_getHand) {
-
+TEST_F(HandModelTest, test_GetHand) {
+  ASSERT_TRUE(h->GetHand().size() == 0);
+  CardModel* c;
+  c = new Cardmodel(5);
+  h->addCard(c);
+  ASSERT_TRUE(h->GetHand().size() == 1);
+  h->removeCard(1);
+  ASSERT_TRUE(h->GetHand().size() == 0);
+  delete c;
+  c = NULL;
 }
 
 TEST_F(HandModelTest, test_addCard) {
