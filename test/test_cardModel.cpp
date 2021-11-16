@@ -21,6 +21,10 @@ class CardModelTest : public testing::Test {
   }
 };
 
+TEST_F(CardModelTest, test_getNumber) {
+    ASSERT_EQ(c->getNumber(), 1);
+}
+
 TEST_F(CardModelTest, test_setNumber) {
   int testInt = 2;
   c->setNumber(testInt);
