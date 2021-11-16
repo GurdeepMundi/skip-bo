@@ -41,7 +41,13 @@ TEST_F(HandModelTest, test_GetHand) {
 }
 
 TEST_F(HandModelTest, test_addCard) {
-
+  ASSERT_TRUE(h->getNumberOfCards() == 0);
+  h->addCard(c);
+  ASSERT_TRUE(h->getNumberOfCards() == 1);
+  h->addCard(c);
+  ASSERT_TRUE(h->getNumberOfCards() == 2);
+  h->addCard(c);
+  ASSERT_TRUE(h->getNumberOfCards() == 3);
 }
 
 TEST_F(HandModelTest, test_removeCard) {
