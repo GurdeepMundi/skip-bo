@@ -93,5 +93,14 @@ TEST_F(HandModelTest, test_getNumberOfCards) {
 }
 
 TEST_F(HandModelTest, test_useCard) {
-
+  ASSERT_TRUE(h->getNumberOfCards() == 0);
+  h->addCard(c1);
+  h->addCard(c2);
+  h->addCard(c3);
+  ASSERT_TRUE(h->useCard(0) == c1);
+  ASSERT_TRUE(h->useCard(1) == c2);
+  ASSERT_TRUE(h->useCard(2) == c3);
+  h->removeCard(0);
+  h->removeCard(0);
+  h->removeCard(0);
 }
