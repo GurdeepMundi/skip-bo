@@ -22,3 +22,28 @@ class HandModelTest : public testing::Test {
         h = NULL;
     }
 };
+
+TEST_F(HandModelTest, test_Constructor) {
+  ASSERT_TRUE(h->getNumberOfCards() == 0);
+  ASSERT_TRUE(h->getHand().size() == 0);
+}
+
+TEST_F(HandModelTest, test_getHand) {
+
+}
+
+TEST_F(HandModelTest, test_addCard) {
+
+}
+
+TEST_F(HandModelTest, test_removeCard) {
+
+}
+
+TEST_F(HandModelTest, test_getNumberOfCards) {
+
+}
+
+TEST_F(HandModelTest, test_useCard) {
+
+}
