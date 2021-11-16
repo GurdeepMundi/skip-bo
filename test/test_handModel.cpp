@@ -14,12 +14,16 @@
 class HandModelTest : public testing::Test {
  protected:
     HandModel* h;
+    CardModel* c;
     void SetUp() override {
         h = new HandModel();
+        c = new CardModel(1);
     }
     void TearDown() override {
         delete h;
+        delete c;
         h = NULL;
+        c = NULL;
     }
 };
 
@@ -30,14 +34,10 @@ TEST_F(HandModelTest, test_Constructor) {
 
 TEST_F(HandModelTest, test_GetHand) {
   ASSERT_TRUE(h->GetHand().size() == 0);
-  CardModel* c;
-  c = new Cardmodel(5);
   h->addCard(c);
   ASSERT_TRUE(h->GetHand().size() == 1);
   h->removeCard(1);
   ASSERT_TRUE(h->GetHand().size() == 0);
-  delete c;
-  c = NULL;
 }
 
 TEST_F(HandModelTest, test_addCard) {
