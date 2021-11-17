@@ -1,7 +1,7 @@
 /**
    test_handModel
    Tests HandModel Class
-   Written by Austin Ball
+   Written by Muhammad Saleh
    on 11/11/2021
    CPSC3720
 */
