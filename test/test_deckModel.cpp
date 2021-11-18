@@ -112,11 +112,37 @@ TEST_F(DeckModelTest, test_getGarbage) {
 TEST_F(DeckModelTest, DISABLED_test_addBuildToGarbage) {
     ASSERT_EQ(d->getGarbage().size(), 0);
     std::stack<CardModel*> s;
-    for (int i = 0; i < 162; i++) {
+    for (int i = 0; i < d->getsize(); i++) {
         s.push(d->getDeck()[i]);
     }
     int x = s.size();
     d->addBuildToGarbage(s);
     ASSERT_EQ(d->getGarbage().size(), x);
     ASSERT_EQ(s.size(), 0);
+}
+
+// double free or corruption error. Fix destructors.
+TEST_F(DeckModelTest, DISABLED_test_addGarbageToDeck) {
+    std::stack<CardModel*> s;
+    for (int i = 0; i < d->getsize(); i++) {
+        s.push(d->getDeck()[i]);
+    }
+    d->addBuildToGarbage(s);
+    int x = d->getGarbage().size();
+    ASSERT_NE(x, 0);
+    int y = d->getsize();
+    d->addGarbageToDeck();
+    ASSERT_EQ(d->getsize(), (x+y));
+}
+
+// Won't pass because they're not removing cards from the deck correctly.
+// Same issue as last 2 tests. I'm done wasting time on this awful class.
+TEST_F(DeckModelTest, DISABLED_test_checkSize) {
+    std::stack<CardModel*> s;
+    for (int i = 0; i < (d->getsize()*2); i++) {
+        s.push(d->getTopCard());
+    }
+    ASSERT_LT(d->getsize(), 10);
+    d->checkSize();
+    ASSERT_GT(d->getsize(), 10);
 }
