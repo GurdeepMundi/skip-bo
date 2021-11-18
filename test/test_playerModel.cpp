@@ -16,6 +16,8 @@
 #include <vector>
 #include "gtest/gtest.h"
 
+using std::vector;
+
 class PlayerTest : public testing::Test {
  protected:
     Player* p1;
@@ -70,4 +72,30 @@ TEST_F(PlayerTest, test_handsize) {
 TEST_F(PlayerTest, test_stocksize) {
     ASSERT_EQ(p1->stocksize(), 0);
 }
+
+TEST_F(PlayerTest, test_returnHand) {
+    HandModel* h = p1->returnHand();
+    ASSERT_EQ(h->getNumberOfCards(), p1->handsize());
+}
+
+TEST_F(PlayerTest, test_addCard) {
+    CardModel* c = d->getTopCard();
+    ASSERT_EQ(p1->returnHand()->getNumberOfCards(), 0);
+    p1->addCard(c);
+    ASSERT_EQ(p1->returnHand()->getNumberOfCards(), 1);
+}
+
+TEST_F(PlayerTest, test_useCard) {
+    p1->addCard(d->getTopCard());
+    ASSERT_EQ(p1->handsize(), 1);
+    CardModel* c = p1->useCard(0);
+    ASSERT_EQ(c->getNumber(), 1);
+}
+
+// TEST_F(PlayerTest, test_usediscard) {
+//     p1->addCard(d->getTopCard());
+//     ASSERT_EQ(p1->handsize(), 1);
+//     CardModel* c = p1->useCard(0);
+//     ASSERT_EQ(c->getNumber(), 1);
+// }
 
