@@ -58,8 +58,8 @@ coverage: $(PROGRAM_TEST)
 	rm -f *.gcda *.gcno
 
 .PHONY: memcheck-game
-memcheck-game: $(PROGRAM)
-	valgrind --tool=memcheck --leak-check=full --error-exitcode=1 $(PROGRAM)
+memcheck-game: $()
+	valgrind --tool=memcheck --leak-check=full --error-exitcode=1 $()
 
 .PHONY: memcheck-test
 memcheck-test: $(PROGRAM_TEST)
