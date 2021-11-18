@@ -61,9 +61,9 @@ coverage: $(PROGRAM_TEST)
 #memcheck-game: $(PROGRAM)
 #	valgrind --tool=memcheck --leak-check=full --error-exitcode=1 $(PROGRAM)
 
-.PHONY: memcheck-test
-memcheck-test: $(PROGRAM_TEST)
-	valgrind --tool=memcheck --leak-check=full --error-exitcode=1 $(PROGRAM_TEST)
+#.PHONY: memcheck-test
+#memcheck-test: $(PROGRAM_TEST)
+#	valgrind --tool=memcheck --leak-check=full --error-exitcode=1 $(PROGRAM_TEST)
 
 .PHONY: static
 static: ${SRC_DIR} $(TEST_DIR)
