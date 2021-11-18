@@ -40,4 +40,5 @@ TEST_F(PileModelTest, addCard) {
   p->addCard(newCard);
   EXPECT_EQ(p->getSize(), 2);
   EXPECT_EQ(p->getTopNum(), newCard->getNumber());
+  //deleting newCard or c will give memory corruption (double free)
 }
