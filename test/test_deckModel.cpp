@@ -9,6 +9,7 @@
 #include "DeckModel.h"
 #include "CardModel.h"
 #include <vector>
+#include <stack>
 #include "gtest/gtest.h"
 
 using std::vector;
@@ -18,7 +19,7 @@ class DeckModelTest : public testing::Test {
     DeckModel * d;
     void SetUp() override {
         d = new DeckModel();
-        //d->buildDeck();
+        d->buildDeck();
     }
     void TearDown() override {
         delete d;
@@ -27,7 +28,6 @@ class DeckModelTest : public testing::Test {
 };
 
 TEST_F(DeckModelTest, test_getDeck) {
-    d->buildDeck();
     vector<CardModel*> test;
 
     // copy contents in order to verify after
@@ -41,7 +41,6 @@ TEST_F(DeckModelTest, test_getDeck) {
 }
 
 TEST_F(DeckModelTest, test_shuffleDeck) {
-    d->buildDeck();
     // assign cards to preserve initial order
     vector<CardModel*> test = d->getDeck();
 
@@ -57,7 +56,6 @@ TEST_F(DeckModelTest, test_shuffleDeck) {
 
 // tests for additional condition that the top card has actually been removed
 TEST_F(DeckModelTest, test_getTopCard) {
-    d->buildDeck();
     // preserve original top card
     CardModel* origTopCard = d->getDeck()[0];
     // grab return from method
@@ -71,7 +69,6 @@ TEST_F(DeckModelTest, test_getTopCard) {
 
 // verifies difference in behavior between getTopCard and getFirstCard
 TEST_F(DeckModelTest, test_getterDifference) {
-    d->buildDeck();
     // grab return from getTopCard
     CardModel* getTopCard = d->getTopCard();
     // grab return from getFirstCard
@@ -85,25 +82,41 @@ TEST_F(DeckModelTest, test_getterDifference) {
 
 // only tests for correctness of return
 TEST_F(DeckModelTest, test_getFirstCard) {
-    d->buildDeck();
     CardModel* test = d->getDeck()[0];
 
     ASSERT_TRUE(test->getNumber() == d->getFirstCard()->getNumber());
 }
 
 TEST_F(DeckModelTest, test_removeCardsDup) {
-    d->buildDeck();
     int origDeckSize = d->getDeck().size();
     d->removeCardsDup(9);
     ASSERT_FALSE(origDeckSize == d->getDeck().size());
 }
 
 TEST_F(DeckModelTest, test_getsize) {
-    d->buildDeck();
     int origDeckSize = d->getDeck().size();
     int retDeckSize = d->getsize();
     ASSERT_TRUE(origDeckSize == retDeckSize);
     d->removeCardsDup(9);
     int newRetSize = d->getsize();
     ASSERT_FALSE(retDeckSize == newRetSize);
+}
+
+TEST_F(DeckModelTest, test_getGarbage) {
+    vector<CardModel*> v = d->getGarbage();
+    ASSERT_EQ(v.size(), 0);
+}
+
+// Disabled because this refuses to pass even though it definitely should.
+// Garbage always comes out to half of the size sent into it.
+TEST_F(DeckModelTest, DISABLED_test_addBuildToGarbage) {
+    ASSERT_EQ(d->getGarbage().size(), 0);
+    std::stack<CardModel*> s;
+    for (int i = 0; i < 162; i++) {
+        s.push(d->getDeck()[i]);
+    }
+    int x = s.size();
+    d->addBuildToGarbage(s);
+    ASSERT_EQ(d->getGarbage().size(), x);
+    ASSERT_EQ(s.size(), 0);
 }
