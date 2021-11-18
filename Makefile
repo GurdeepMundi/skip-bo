@@ -57,9 +57,9 @@ coverage: $(PROGRAM_TEST)
 	#Remove all of the generated files from gcov
 	rm -f *.gcda *.gcno
 
-.PHONY: memcheck-game
-memcheck-game: $()
-	valgrind --tool=memcheck --leak-check=full --error-exitcode=1 $()
+#.PHONY: memcheck-game
+#memcheck-game: $(PROGRAM)
+#	valgrind --tool=memcheck --leak-check=full --error-exitcode=1 $(PROGRAM)
 
 .PHONY: memcheck-test
 memcheck-test: $(PROGRAM_TEST)
