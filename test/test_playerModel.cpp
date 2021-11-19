@@ -18,7 +18,7 @@
 
 using std::vector;
 
-class PlayerTest : public testing::Test, public Player {
+class PlayerTest : public testing::Test {
  protected:
     Player* p1;
     Player* p2;
@@ -62,7 +62,7 @@ TEST_F(PlayerTest, test_setComputerPlayer) {
 TEST_F(PlayerTest, test_addToStock) {
     ASSERT_EQ(p1->stocksize(), 0);
     p1->addToStock(d);
-    ASSERT_NE(p1->stocksize(), 0);
+    ASSERT_EQ(p1->stocksize(), 30);
 }
 
 TEST_F(PlayerTest, test_handsize) {
@@ -76,6 +76,7 @@ TEST_F(PlayerTest, test_stocksize) {
 TEST_F(PlayerTest, test_returnHand) {
     HandModel* h = p1->returnHand();
     ASSERT_EQ(h->getNumberOfCards(), p1->handsize());
+    ASSERT_NE(p1->returnHand(), p2->returnHand());
 }
 
 TEST_F(PlayerTest, test_addCard) {
@@ -83,6 +84,13 @@ TEST_F(PlayerTest, test_addCard) {
     ASSERT_EQ(p1->returnHand()->getNumberOfCards(), 0);
     p1->addCard(c);
     ASSERT_EQ(p1->returnHand()->getNumberOfCards(), 1);
+}
+
+TEST_F(PlayerTest, test_removeCard) {
+    p1->addCard(d->getTopCard());
+    ASSERT_EQ(p1->returnHand()->getNumberOfCards(), 1);
+    p1->removeCard(0);
+    ASSERT_EQ(p1->returnHand()->getNumberOfCards(), 0);
 }
 
 TEST_F(PlayerTest, test_useCard) {
@@ -114,3 +122,39 @@ TEST_F(PlayerTest, test_usediscard) {
     ASSERT_EQ(c->getNumber(), 1);
 }
 
+TEST_F(PlayerTest, test_deleteDiscardCard) {
+    p1->usingDiscard(d->getTopCard(), 0);
+    ASSERT_EQ(p1->returnArrPile()->getPile(0)->getSize(), 1);
+    p1->deleteDiscardCard(0);
+    ASSERT_EQ(p1->returnArrPile()->getPile(0)->getSize(), 0);
+}
+
+TEST_F(PlayerTest, test_useStock) {
+    p1->addToStock(d);
+    ASSERT_EQ(p1->stocksize(), 30);
+    CardModel* c = p1->useStock();
+    ASSERT_EQ(c->getNumber(), 3);
+}
+
+TEST_F(PlayerTest, test_deleteStockCard) {
+    p1->addToStock(d);
+    p1->deleteStockCard();
+    ASSERT_EQ(p1->stocksize(), 29);
+    p1->deleteStockCard();
+    ASSERT_EQ(p1->stocksize(), 28);
+}
+
+TEST_F(PlayerTest, test_returnStock) {
+    ASSERT_NE(p1->returnStock(), p2->returnStock());
+    p1->addToStock(d);
+    ASSERT_GT(p1->returnStock()->getNumberOfCards(),
+              p2->returnStock()->getNumberOfCards());
+}
+
+TEST_F(PlayerTest, test_returnArrPile) {
+    ASSERT_NE(p1->returnArrPile(), p2->returnArrPile());
+    ArrPileModel* x = p1->returnArrPile();
+    ArrPileModel* y = p2->returnArrPile();
+    ASSERT_EQ(p1->returnArrPile(), x);
+    ASSERT_EQ(p2->returnArrPile(), y);
+}
