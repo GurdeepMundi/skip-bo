@@ -99,7 +99,7 @@ class Player {
       // Why on Earth wasn't this called getDiscard?! >:(
       ArrPileModel* returnArrPile();
 
- protected:
+ private:
      //HandModel currentHand;
      bool computer = false;
      std::string name;
