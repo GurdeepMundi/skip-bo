@@ -139,7 +139,7 @@ TEST_F(DeckModelTest, DISABLED_test_addGarbageToDeck) {
 // Same issue as last 2 tests. I'm done wasting time on this awful class.
 TEST_F(DeckModelTest, DISABLED_test_checkSize) {
     std::stack<CardModel*> s;
-    for (int i = 0; i < (d->getsize()*2); i++) {
+    for (int i = 0; i < d->getsize(); i++) {
         s.push(d->getTopCard());
     }
     ASSERT_LT(d->getsize(), 10);

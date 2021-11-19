@@ -106,6 +106,7 @@ void Player::displayDiscard(bool computer) {
     }
 }
 
+// Like, SERIOUSLY WHY WAS THIS NOT CALLED GETDISCARD!!!!!!????
 ArrPileModel* Player::returnArrPile() {
   return discard;
 }

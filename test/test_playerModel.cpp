@@ -18,7 +18,7 @@
 
 using std::vector;
 
-class PlayerTest : public testing::Test {
+class PlayerTest : public testing::Test, public Player {
  protected:
     Player* p1;
     Player* p2;
@@ -92,10 +92,25 @@ TEST_F(PlayerTest, test_useCard) {
     ASSERT_EQ(c->getNumber(), 1);
 }
 
-// TEST_F(PlayerTest, test_usediscard) {
-//     p1->addCard(d->getTopCard());
-//     ASSERT_EQ(p1->handsize(), 1);
-//     CardModel* c = p1->useCard(0);
-//     ASSERT_EQ(c->getNumber(), 1);
-// }
+TEST_F(PlayerTest, test_usingDiscard) {
+    ASSERT_EQ(p1->returnArrPile()->getPile(0)->getSize(), 0);
+    ASSERT_EQ(p1->returnArrPile()->getPile(0)->getSize(), 0);
+    ASSERT_EQ(p1->returnArrPile()->getPile(0)->getSize(), 0);
+    ASSERT_EQ(p1->returnArrPile()->getPile(0)->getSize(), 0);
+    p1->usingDiscard(d->getTopCard(), 0);
+    p1->usingDiscard(d->getTopCard(), 1);
+    p1->usingDiscard(d->getTopCard(), 2);
+    p1->usingDiscard(d->getTopCard(), 3);
+    ASSERT_NE(p1->returnArrPile()->getPile(0)->getSize(), 0);
+    ASSERT_NE(p1->returnArrPile()->getPile(0)->getSize(), 0);
+    ASSERT_NE(p1->returnArrPile()->getPile(0)->getSize(), 0);
+    ASSERT_NE(p1->returnArrPile()->getPile(0)->getSize(), 0);
+}
+
+TEST_F(PlayerTest, test_usediscard) {
+    p1->usingDiscard(d->getTopCard(), 0);
+    ASSERT_EQ(p1->returnArrPile()->getPile(0)->getSize(), 1);
+    CardModel* c = p1->usediscard(0);
+    ASSERT_EQ(c->getNumber(), 1);
+}
 
