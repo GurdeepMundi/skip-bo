@@ -32,17 +32,13 @@ TEST_F(PileModelTest, test_getsize) {
   EXPECT_EQ(p->getSize(), 1);
   //not deleting c because gives segfault otherwise
 }
-/*
-TEST_F(PileModelTest, DISABLED_test_addCard) {
+
+TEST_F(PileModelTest, addCard) {
   CardModel* newCard = new CardModel(3);
+  CardModel* c = new CardModel(2);
   p->addCard(c);
   p->addCard(newCard);
   EXPECT_EQ(p->getSize(), 2);
   EXPECT_EQ(p->getTopNum(), newCard->getNumber());
-  delete newCard;
+  //deleting newCard or c will give memory corruption (double free)
 }
-
-TEST_F(PileModelTest, DISABLED_experiment) {
-  CardModel* cc = new CardModel(2);
-  delete cc;
-}*/
