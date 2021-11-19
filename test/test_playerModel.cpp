@@ -148,7 +148,7 @@ TEST_F(PlayerTest, test_returnStock) {
     ASSERT_NE(p1->returnStock(), p2->returnStock());
     p1->addToStock(d);
     ASSERT_GT(p1->returnStock()->getNumberOfCards(),
-	      p2->returnStock()->getNumberOfCards());
+              p2->returnStock()->getNumberOfCards());
 }
 
 TEST_F(PlayerTest, test_returnArrPile) {
