@@ -69,9 +69,9 @@ TEST_F(arrPileModelTest, popTopCard) {
   myArray->insertCard(c, 2);
   myArray->insertCard(c2, 2);
   myArray->popTopcard(2);
-  EXPECT_EQ(myArray-getPile(2)->getNumberOfCards(), 1);
+  EXPECT_EQ(myArray->getPile(2)->getNumberOfCards(), 1);
   myArray->popTopcard(2);
-  EXPECT_EQ(myArray-getPile(2)->getNumberOfCards(), 0);
+  EXPECT_EQ(myArray->getPile(2)->getNumberOfCards(), 0);
   delete c, c2;
 }
 
