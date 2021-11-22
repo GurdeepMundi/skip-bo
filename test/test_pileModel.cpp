@@ -43,17 +43,7 @@ TEST_F(PileModelTest, addCard) {
   //deleting newCard or c will give memory corruption (double free)
 }
 
-//this test checks if the top card and getTopNum methods
-TEST_F(PileModelTest, getTopCard) {
-  CardModel* newCard = new CardModel(3);
-  CardModel* c = new CardModel(2);
-  p->addCard(c);
-  p->addCard(newCard);
-  EXPECT_EQ(p->getTopCard()->getNumber(), 2);
-  EXPECT_EQ(p->getTopNum(), 2);
-  //deleting newCard or c will give memory corruption (double free)
-}
-
+//this test tests getTopCard and getTopNum methods
 TEST_F(PileModelTest, getTopCard) {
   CardModel* newCard = new CardModel(3);
   CardModel* c = new CardModel(2);
@@ -61,5 +51,26 @@ TEST_F(PileModelTest, getTopCard) {
   p->addCard(newCard);
   EXPECT_EQ(p->getTopCard()->getNumber(), 3);
   EXPECT_EQ(p->getTopNum(), 3);
+  //deleting newCard or c will give memory corruption (double free)
+}
+
+TEST_F(PileModelTest, removeCard) {
+  CardModel* newCard = new CardModel(3);
+  CardModel* c = new CardModel(2);
+  p->addCard(c);
+  p->addCard(newCard);
+  p->removeCard();
+  EXPECT_EQ(p->getTopNum(), 2);
+  //deleting newCard or c will give memory corruption (double free)
+}
+
+TEST_F(PileModelTest, getNumberOfCards) {
+  CardModel* newCard = new CardModel(3);
+  CardModel* c = new CardModel(2);
+  p->addCard(c);
+  p->addCard(newCard);
+  EXPECT_EQ(p->getNumberOfCards(), 2);
+  p->removeCard();
+  EXPECT_EQ(p->getNumberOfCards(), 1);
   //deleting newCard or c will give memory corruption (double free)
 }
