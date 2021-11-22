@@ -30,6 +30,7 @@ TEST_F(PileModelTest, test_getsize) {
   c = new CardModel(0);
   p->addCard(c);
   EXPECT_EQ(p->getSize(), 1);
+  delete c;
   //not deleting c because gives segfault otherwise
 }
 
@@ -40,6 +41,7 @@ TEST_F(PileModelTest, addCard) {
   p->addCard(newCard);
   EXPECT_EQ(p->getSize(), 2);
   EXPECT_EQ(p->getTopNum(), newCard->getNumber());
+  delete c, newCard;
   //deleting newCard or c will give memory corruption (double free)
 }
 
@@ -51,6 +53,7 @@ TEST_F(PileModelTest, getTopCard) {
   p->addCard(newCard);
   EXPECT_EQ(p->getTopCard()->getNumber(), 3);
   EXPECT_EQ(p->getTopNum(), 3);
+  delete c, newCard;
   //deleting newCard or c will give memory corruption (double free)
 }
 
@@ -61,6 +64,7 @@ TEST_F(PileModelTest, removeCard) {
   p->addCard(newCard);
   p->removeCard();
   EXPECT_EQ(p->getTopNum(), 2);
+  delete c, newCard;
   //deleting newCard or c will give memory corruption (double free)
 }
 
@@ -72,5 +76,6 @@ TEST_F(PileModelTest, getNumberOfCards) {
   EXPECT_EQ(p->getNumberOfCards(), 2);
   p->removeCard();
   EXPECT_EQ(p->getNumberOfCards(), 1);
+  delete c, newCard;
   //deleting newCard or c will give memory corruption (double free)
 }
