@@ -6,14 +6,15 @@
    CPSC3720
 */
 #include <gtest/gtest.h>
+#include <ArrPileModel.h>
 
 
 class arrPileModelTest: public testing::Test {
  protected:
   void SetUp() override {
-    //ctr
+    ArrPileModel myArrPile = new ArrPileModel();
   }
   void TearDown() {
-    //dtr
+    delete myArrPile;
   }
 };
