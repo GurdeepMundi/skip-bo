@@ -32,5 +32,13 @@ class MockCardGameController : public CardGameController {
     MOCK_METHOD(void, stockPlay, (Player*, ArrPileModel*, int), (override));
     MOCK_METHOD(bool, discardingCard, (Player*, int), (override));
     /* MOCK_METHOD(bool, addingToDiscard, (Player*, Player*, CardModel*, int),
-                 (override)); */
+       (override)); */
+    MOCK_METHOD(bool, addingToPiles, (ArrPileModel*, CardModel*, int),
+		(override));
+    MOCK_METHOD(void, discardPilesPick, (Player*, CardModel*, int),
+		(override));
+    MOCK_METHOD(void, checkBuildSize, (ArrPileModel*, DeckModel*),
+		(override));
+    MOCK_METHOD(void, help, (int), (override));
+    MOCK_METHOD(void, leave, (int), (override));
 };

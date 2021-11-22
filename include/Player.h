@@ -34,7 +34,7 @@ class Player {
       * Returns the player's name
       * @return A string representing the player's name.
       */
-      std::string getName();
+      virtual std::string getName();
 
       // /**
       // * Returns the currentHand
@@ -57,47 +57,47 @@ class Player {
       /**
       * Sets a player as computer player status
       */
-      void setComputerPlayer();
+      virtual void setComputerPlayer();
 
       /**
       * Checks if a player has computer player status
       */
-      bool isComputerPlayer();
+      virtual bool isComputerPlayer();
 
-      void addToStock(DeckModel*);
+      virtual void addToStock(DeckModel*);
 
-      unsigned int handsize();
+      virtual unsigned int handsize();
 
-      int stocksize();
+      virtual int stocksize();
 
-      void addCard(CardModel*);
+      virtual void addCard(CardModel*);
 
-      CardModel* useCard(int);
+      virtual CardModel* useCard(int);
 
-      CardModel* usediscard(int);
+      virtual CardModel* usediscard(int);
 
-      CardModel* useStock();
+      virtual CardModel* useStock();
 
-      void usingDiscard(CardModel*, int);
+      virtual void usingDiscard(CardModel*, int);
 
-      void removeCard(int);
+      virtual void removeCard(int);
 
-      void deleteDiscardCard(int);
+      virtual void deleteDiscardCard(int);
 
-      void deleteStockCard();
+      virtual void deleteStockCard();
 
-      void displayHand();
+      virtual void displayHand();
 
-      HandModel* returnHand();
+      virtual HandModel* returnHand();
 
-      void displayStock();
+      virtual void displayStock();
 
-      PileModel* returnStock();
+      virtual PileModel* returnStock();
 
-      void displayDiscard(bool computer);
+      virtual void displayDiscard(bool computer);
 
       // Why on Earth wasn't this called getDiscard?! >:(
-      ArrPileModel* returnArrPile();
+      virtual ArrPileModel* returnArrPile();
 
  private:
      //HandModel currentHand;

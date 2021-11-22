@@ -49,7 +49,7 @@ class CardGameController {
 
     virtual bool discardingCard(Player*, int);
 
-    // Was this method defined?
+    // This method was never defined
     //virtual bool addingToDiscard(Player*, Player*, CardModel*, int);
 
     virtual bool addingToPiles(ArrPileModel*, CardModel*, int);
