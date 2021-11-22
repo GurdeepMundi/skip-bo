@@ -53,3 +53,13 @@ TEST_F(PileModelTest, getTopCard) {
   EXPECT_EQ(p->getTopNum(), 2);
   //deleting newCard or c will give memory corruption (double free)
 }
+
+TEST_F(PileModelTest, getTopCard) {
+  CardModel* newCard = new CardModel(3);
+  CardModel* c = new CardModel(2);
+  p->addCard(c);
+  p->addCard(newCard);
+  EXPECT_EQ(p->getTopCard()->getNumber(), 3);
+  EXPECT_EQ(p->getTopNum(), 3);
+  //deleting newCard or c will give memory corruption (double free)
+}
