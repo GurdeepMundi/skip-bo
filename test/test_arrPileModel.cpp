@@ -69,9 +69,9 @@ TEST_F(arrPileModelTest, popTopCard) {
   myArray->insertCard(c, 2);
   myArray->insertCard(c2, 2);
   myArray->popTopcard(2);
-  EXPECT_EQ(myArray->getPile(2)->currentPile.size(), 1);
+  EXPECT_EQ(myArray->getPile(2)->getNumberOfCards(), 1);
   myArray->popTopcard(2);
-  EXPECT_EQ(myArray->getPile(2)->currentPile.size(), 0);
+  EXPECT_EQ(myArray->getPile(2)->getNumberOfCards(), 0);
   delete c, c2;
 }
 
@@ -79,5 +79,14 @@ TEST_F(arrPileModelTest, putCardInDiscard) {
   CardModel* c = new CardModel(3);
   myArray->putCardInDiscard(c, 1);
   EXPECT_EQ(myArray->getPile(1)->getTopNum(), 3);
+  delete c;
+}
+
+TEST_F(arrPileModelTest, clearPile) {
+  CardModel* c = new CardModel(3);
+  myArray->putCardInDiscard(c, 1);
+  EXPECT_EQ(myArray->getPile(1)->getTopNum(), 3);
+  myArray->clearPile();
+  EXPECT_EQ(myArray->getPile(1)->getNumberOfCards(), 0);
   delete c;
 }
