@@ -74,3 +74,10 @@ TEST_F(arrPileModelTest, popTopCard) {
   EXPECT_EQ(myArray-getPile(2)->getNumberOfCards(), 0);
   delete c, c2;
 }
+
+TEST_F(arrPileModelTest, putCardInDiscard) {
+  CardModel* c = new CardModel(3);
+  myArray->putCardInDiscard(c, 1);
+  EXPECT_EQ(myArray->getPile(1)->getTopNum(), 3);
+  delete c;
+}
