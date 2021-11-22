@@ -38,13 +38,20 @@ TEST_F(arrPileModelTest, buildPileArr) {
 
 TEST_F(arrPileModelTest, insertCard) {
   CardModel* c = new CardModel(3);
+  CardModel* c2 = new CardModel(3);
+  CardModel* c3 = new CardModel(3);
+  CardModel* c4 = new CardModel(3);
   EXPECT_FALSE(myArray->insertCard(c, 1));
   c->setNumber(1);
   EXPECT_TRUE(myArray->insertCard(c, 1));
-  c->setNumber(2);
+  c2->setNumber(2);
+  EXPECT_TRUE(myArray->insertCard(c2, 1));
+  c3->setNumber(0);
   EXPECT_TRUE(myArray->insertCard(c, 1));
-  c->setNumber(0);
-  EXPECT_TRUE(myArray->insertCard(c, 1));
-  c->setNumber(1);
+  c4->setNumber(1);
   EXPECT_FALSE(myArray->insertCard(c, 1));
+  delete c, c2, c3, c4;
+}
+
+TEST_F(arrPileModelTest, useDiscard) {
 }
