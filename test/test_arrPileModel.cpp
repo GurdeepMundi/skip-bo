@@ -21,8 +21,13 @@ class arrPileModelTest: public testing::Test {
   }
 };
 
+// tests the constructor and getPile
 TEST_F(arrPileModelTest, constructorTest) {
   PileModel* newModel;
-  newModel = myArray->getPile(4);
+  newModel = myArray->getPile(3);
   EXPECT_EQ(newModel->getNumberOfCards(), 0);
+}
+
+TEST_F(arrPileModelTest, getPile) {
+
 }
