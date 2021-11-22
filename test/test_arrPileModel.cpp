@@ -59,5 +59,17 @@ TEST_F(arrPileModelTest, useDiscard) {
   EXPECT_EQ(myArray->usediscard(1)->getNumber(),20);
   myArray->insertCard(c, 2);
   myArray->insertCard(c2, 2);
-  EXPECT_EQ(myArray->usediscard(2)->getNumber(),1);
+  EXPECT_EQ(myArray->usediscard(2)->getNumber(), c2->getNumber());
+  delete c, c2;
+}
+
+TEST_F(arrPileModelTest, popTopCard) {
+  CardModel* c = new CardModel(1);
+  CardModel* c2 = new CardModel(2);
+  myArray->insertCard(c, 2);
+  myArray->insertCard(c2, 2);
+  myArray->popTopCard(2);
+  EXPECT_EQ(myArray-getPile(2)->getNumberOfCards(), 1);
+  myArray->popTopCard(2);
+  EXPECT_EQ(myArray-getPile(2)->getNumberOfCards(), 0);
 }
