@@ -9,6 +9,7 @@
 #include <ArrPileModel.h>
 #include <PileModel.h>
 #include <vector>
+#include <CardModel.h>
 
 
 class arrPileModelTest: public testing::Test {
@@ -33,4 +34,11 @@ TEST_F(arrPileModelTest, buildPileArr) {
   std::vector<PileModel* > v;
   v = myArray->buildPileArr();
   EXPECT_EQ(v.size(), 4);
+}
+
+TEST_F(arrPileModelTest, insertCard) {
+  CardModel* c = new CardModel(3);
+  EXPECT_FALSE(myArray->insertCard(c, 1));
+  c->setNumber(1);
+  EXPECT_TRUE(myArray->insertCard(c, 1));
 }
