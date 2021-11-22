@@ -25,41 +25,42 @@ class CardGameController {
     /**
     * Destructor
     */
-    ~CardGameController();
+    virtual ~CardGameController();
 
-    void gameStart();
+    virtual void gameStart();
 
-    void deckSetup(DeckModel*);
+    virtual void deckSetup(DeckModel*);
 
-    void playerSetup(Player*, DeckModel*);
+    virtual void playerSetup(Player*, DeckModel*);
 
-    void displayBoard(Player*, Player*, DeckModel*, ArrPileModel*);
+    virtual void displayBoard(Player*, Player*, DeckModel*, ArrPileModel*);
 
-    void opponentTurn(Player*, Player*, DeckModel*, ArrPileModel*);
+    virtual void opponentTurn(Player*, Player*, DeckModel*, ArrPileModel*);
 
-    void playCards(Player*, Player*, DeckModel*, ArrPileModel*);
+    virtual void playCards(Player*, Player*, DeckModel*, ArrPileModel*);
 
-    void dealHand(Player*, DeckModel*);
+    virtual void dealHand(Player*, DeckModel*);
 
-    void handPlay(Player*, ArrPileModel*, int);
+    virtual void handPlay(Player*, ArrPileModel*, int);
 
-    void discardPlay(Player*, ArrPileModel*, int);
+    virtual void discardPlay(Player*, ArrPileModel*, int);
 
-    void stockPlay(Player*, ArrPileModel*, int);
+    virtual void stockPlay(Player*, ArrPileModel*, int);
 
-    bool discardingCard(Player*, int);
+    virtual bool discardingCard(Player*, int);
 
-    bool addingToDiscard(Player*, Player*, CardModel*, int);
+    // This method was never defined
+    //virtual bool addingToDiscard(Player*, Player*, CardModel*, int);
 
-    bool addingToPiles(ArrPileModel*, CardModel*, int);
+    virtual bool addingToPiles(ArrPileModel*, CardModel*, int);
 
-    void discardPilesPick(Player*, CardModel*, int);
+    virtual void discardPilesPick(Player*, CardModel*, int);
 
-    void checkBuildSize(ArrPileModel*, DeckModel*);
+    virtual void checkBuildSize(ArrPileModel*, DeckModel*);
 
-    void help(int);
+    virtual void help(int);
 
-    void leave(int);
+    virtual void leave(int);
 
  private:
     InputView* userInput;
