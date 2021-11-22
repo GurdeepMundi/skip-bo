@@ -79,7 +79,7 @@ class ArrPileModel {
     */
     void clearPile(int);
 
- private:
+ protected:
     std::vector<PileModel*> piles;
 };
 #endif

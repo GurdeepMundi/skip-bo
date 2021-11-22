@@ -48,6 +48,10 @@ std::vector<CardModel*> DeckModel::getDeck() {
   return currentDeck;
 }
 
+std::vector<CardModel*> DeckModel::getGarbage() {
+  return garbage;
+}
+
 void DeckModel::removeCardsDup(int num) {
   for (int i = 0; i < num; i++) {
     currentDeck.erase(currentDeck.begin());

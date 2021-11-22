@@ -96,16 +96,15 @@ class Player {
 
       void displayDiscard(bool computer);
 
+      // Why on Earth wasn't this called getDiscard?! >:(
       ArrPileModel* returnArrPile();
 
- protected:
+ private:
      //HandModel currentHand;
      bool computer = false;
-
- private:
-      std::string name;
-      HandModel* hand = new HandModel;
-      PileModel* stock = new PileModel;
-      ArrPileModel* discard = new ArrPileModel;
+     std::string name;
+     HandModel* hand = new HandModel;
+     PileModel* stock = new PileModel;
+     ArrPileModel* discard = new ArrPileModel;
 };
 #endif //PLAYER_H_INCLUDED

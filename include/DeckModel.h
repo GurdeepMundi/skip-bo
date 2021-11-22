@@ -50,6 +50,12 @@ class DeckModel {
     std::vector<CardModel*> getDeck();
 
     /**
+    * Gets a vector of garbage cards
+    * @return vector<CardModel*>
+    */
+    std::vector<CardModel*> getGarbage();
+
+    /**
     * Removes all cards from the deck.?
     */
     void removeCardsDup(int);
