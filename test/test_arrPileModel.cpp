@@ -86,7 +86,7 @@ TEST_F(arrPileModelTest, clearPile) {
   CardModel* c = new CardModel(3);
   myArray->putCardInDiscard(c, 1);
   EXPECT_EQ(myArray->getPile(1)->getTopNum(), 3);
-  myArray->clearPile();
+  myArray->clearPile(1);
   EXPECT_EQ(myArray->getPile(1)->getNumberOfCards(), 0);
   delete c;
 }
