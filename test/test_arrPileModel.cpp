@@ -47,9 +47,9 @@ TEST_F(arrPileModelTest, insertCard) {
   c2->setNumber(2);
   EXPECT_TRUE(myArray->insertCard(c2, 1));
   c3->setNumber(0);
-  EXPECT_TRUE(myArray->insertCard(c, 1));
+  EXPECT_TRUE(myArray->insertCard(c3, 1));
   c4->setNumber(1);
-  EXPECT_FALSE(myArray->insertCard(c, 1));
+  EXPECT_FALSE(myArray->insertCard(c4, 1));
   delete c, c2, c3, c4;
 }
 
