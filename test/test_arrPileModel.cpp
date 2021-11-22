@@ -8,11 +8,12 @@
 #include <gtest/gtest.h>
 #include <ArrPileModel.h>
 #include <PileModel.h>
+#include <vector>
 
 
 class arrPileModelTest: public testing::Test {
  protected:
-   ArrPileModel* myArray;
+  ArrPileModel* myArray;
   void SetUp() override {
     myArray = new ArrPileModel();
   }
@@ -28,6 +29,8 @@ TEST_F(arrPileModelTest, constructorTest) {
   EXPECT_EQ(newModel->getNumberOfCards(), 0);
 }
 
-TEST_F(arrPileModelTest, getPile) {
-
+TEST_F(arrPileModelTest, buildPileArr) {
+  std::vector<PileModel* > v;
+  v = myArray->buildPileArr();
+  EXPECT_EQ(v.size(), 4);
 }
