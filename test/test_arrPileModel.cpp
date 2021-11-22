@@ -56,6 +56,6 @@ TEST_F(arrPileModelTest, insertCard) {
 TEST_F(arrPileModelTest, useDiscard) {
   CardModel* c = new CardModel(1);
   EXPECT_EQ(myArray->usediscard(1)->getNumber(),20);
-  myArray->insertCard(c, 1);
-  EXPECT_EQ(myArray->usediscard(1)->getNumber(),1);
+  myArray->insertCard(c, 2);
+  EXPECT_EQ(myArray->usediscard(2)->getNumber(),1);
 }
