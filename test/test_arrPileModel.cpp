@@ -12,16 +12,17 @@
 
 class arrPileModelTest: public testing::Test {
  protected:
+   ArrPileModel* myArray;
   void SetUp() override {
-    ArrPileModel* myArrPile = new ArrPileModel();
+    myArray = new ArrPileModel();
   }
   void TearDown() {
-    //delete myArrPile;
+    delete myArray;
   }
 };
 
 TEST_F(arrPileModelTest, constructorTest) {
   PileModel* newModel;
-  newModel = myArrPile->getPile(4);
+  newModel = myArray->getPile(4);
   EXPECT_EQ(newModel->getNumberOfCards(), 0);
 }
