@@ -61,5 +61,5 @@ TEST(GameControllerTest, gameStart) {
     //EXPECT_CALL(p2, addToStock()).Times(AtLeast(1));
 
     CardGameController cont(new InputView(), new Player(), new Player(), &d, new ArrPileModel());
-    EXPECT_TRUE(cont.gameStart());
+    cont.gameStart();
 }
