@@ -8,7 +8,7 @@
 #ifndef MOCKDECKMODEL_H
 #define MOCKDECKMODEL_H
 
-#include "DeckModel.h"
+#include <DeckModel.h>
 #include <CardModel.h>
 #include <vector>
 #include <stack>
