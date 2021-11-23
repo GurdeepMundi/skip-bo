@@ -14,7 +14,7 @@
 #include "PileModel.h"
 #include "CardModel.h"
 #include "gmock/gmock.h"
-
+/*
 class MockCardGameController : public CardGameController {
  public:
     MOCK_METHOD(void, gameStart, (), (override));
@@ -33,6 +33,7 @@ class MockCardGameController : public CardGameController {
     MOCK_METHOD(bool, discardingCard, (Player*, int), (override));
     /* MOCK_METHOD(bool, addingToDiscard, (Player*, Player*, CardModel*, int),
        (override)); */
+       /*
     MOCK_METHOD(bool, addingToPiles, (ArrPileModel*, CardModel*, int),
                 (override));
     MOCK_METHOD(void, discardPilesPick, (Player*, CardModel*, int),
@@ -41,4 +42,4 @@ class MockCardGameController : public CardGameController {
                 (override));
     MOCK_METHOD(void, help, (int), (override));
     MOCK_METHOD(void, leave, (int), (override));
-};
+};*/
