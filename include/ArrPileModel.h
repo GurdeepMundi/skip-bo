@@ -25,19 +25,19 @@ class ArrPileModel {
     /**
     * Destructor
     */
-    ~ArrPileModel();
+    virtual ~ArrPileModel();
 
     /**
     * Gets the correct pile
     * @return PileModel*
     */
-    PileModel* getPile(int pileNum);
+    virtual PileModel* getPile(int pileNum);
 
     /**
     * Builds the layout of piles of cards
     * @return vector<PileModel*>
     */
-    std::vector<PileModel*> buildPileArr();
+    virtual std::vector<PileModel*> buildPileArr();
 
     /**
     * Inserts a card into the build piles
@@ -45,39 +45,39 @@ class ArrPileModel {
     * @param int the number of the pile we are adding to
     * @return bool
     */
-    bool insertCard(CardModel*, int);
+    virtual bool insertCard(CardModel*, int);
 
     /**
     * Plays a card from the discard piles
     * @param int the number of the pile we are adding to
     * @return CardModel*
     */
-    CardModel* usediscard(int);
+    virtual CardModel* usediscard(int);
 
     /**
     * removes a card from the discard piles
     * @param int the number of the pile we are taking from
     */
-    void popTopcard(int);
+    virtual void popTopcard(int);
 
     /**
     * Puts a card in a discard pile
     * @param CardModel* the card to be placed
     * @param int the number of the pile
     */
-    void putCardInDiscard(CardModel*, int);
+    virtual void putCardInDiscard(CardModel*, int);
 
     /**
     * Checks the size
     * @param DeckModel* the deck to be checked
     */
-    void checkBuildSize(DeckModel*);
+    virtual void checkBuildSize(DeckModel*);
 
     /**
     * Clears the pile
     * @param int the number of the pile to be cleared
     */
-    void clearPile(int);
+    virtual void clearPile(int);
 
  protected:
     std::vector<PileModel*> piles;
