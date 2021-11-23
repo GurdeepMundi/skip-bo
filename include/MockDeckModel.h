@@ -12,6 +12,10 @@
 #include <CardModel.h>
 #include <vector>
 #include <stack>
+#include "gtest/gtest.h"
+#include "gmock/gmock.h"
+using ::testing::Expectation;
+using ::testing::Return;
 
 using std::vector;
 using std::stack;
