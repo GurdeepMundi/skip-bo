@@ -16,8 +16,11 @@
 
 class MockArrPileModel : public ArrPileModel {
  public:
+  explicit MockArrPileModel();
+  virtual ~MockArrPileModel();
+  
   MOCK_METHOD1(getPile, PileModel*(int), (override));
-  MOCK_METHOD(buildPileArr, std::vector<PileModel*>(), (override));
+  MOCK_METHOD0(buildPileArr, std::vector<PileModel*>(), (override));
   MOCK_METHOD2(insertCard, bool(CardModel*, int), (override));
   MOCK_METHOD1(usediscard, CardModel*(int), (override));
   MOCK_METHOD1(popTopcard, void(int), (override));

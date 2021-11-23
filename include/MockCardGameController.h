@@ -17,7 +17,11 @@
 
 class MockCardGameController : public CardGameController {
  public:
-    MOCK_METHOD(gameStart, void(), (override));
+   explicit MockCardGameController(InputView*, Player*, Player*, DeckModel*,
+     ArrPileModel*);
+   virtual ~MockCardGameController();
+
+    MOCK_METHOD0(gameStart, void(), (override));
     MOCK_METHOD1(deckSetup, void(DeckModel*), (override));
     MOCK_METHOD2(playerSetup, void(Player*, DeckModel*), (override));
     MOCK_METHOD4(displayBoard, void(Player*, Player*, DeckModel*,
@@ -31,8 +35,8 @@ class MockCardGameController : public CardGameController {
     MOCK_METHOD3(discardPlay, void(Player*, ArrPileModel*, int), (override));
     MOCK_METHOD3(stockPlay, void(Player*, ArrPileModel*, int), (override));
     MOCK_METHOD2(discardingCard, bool(Player*, int), (override));
-    /* MOCK_METHOD4(addingToDiscard, bool, addingToDiscard, (Player*, Player*, CardModel*, int),
-       (override)); */
+    /* MOCK_METHOD4(addingToDiscard,
+    bool(Player*, Player*, CardModel*, int),(override)); */
     MOCK_METHOD3(addingToPiles, bool(ArrPileModel*, CardModel*, int),
                 (override));
     MOCK_METHOD3(discardPilesPick, void(Player*, CardModel*, int),
