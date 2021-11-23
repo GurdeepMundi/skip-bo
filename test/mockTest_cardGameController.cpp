@@ -8,7 +8,7 @@
 */
 
 //#include "MockCardGameController.h"
-#include "MockPlayer.h"
+//#include "MockPlayer.h"
 #include "MockDeckModel.h"
 #include "Player.h"
 #include "DeckModel.h"
@@ -19,9 +19,32 @@
 #include "cardGameController.h"
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
-/*
+
 using ::testing::Expectation;
 using ::testing::AtLeast;
+
+class GameControllerTest : public testing::Test {
+ protected:
+    InputView* iv;
+    Player* p1;
+    Player* p2;
+    DeckModel* d;
+    ArrPileModel* arr;
+    void SetUp() override {
+        iv = new InputView();
+        p1 = new Player("User");
+        p2 = new Player("AI");
+        d = new DeckModel();
+        arr = new ArrPileModel();
+    }
+    void TearDown() override {
+        delete iv, p1, p2, d, arr;
+    }
+};
+
+TEST_F(GameControllerTest, constructorTest) {
+  EXPECT_NO_THROW(CardModelController myGame(iv, p1, p2, d, arr));
+}
 
 TEST(CardGameControllerTest, gameStart) {
     MockPlayer* p1;
