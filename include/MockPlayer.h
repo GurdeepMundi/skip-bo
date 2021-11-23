@@ -12,13 +12,13 @@
 #include "HandModel.h"
 #include "PileModel.h"
 #include "CardModel.h"
-#include "gmock/gmock.h"
 #include <string>
+#include "gmock/gmock.h"
 
 class MockPlayer : public Player {
  public:
-   explicit MockPlayer(std::string) {}
-   virtual ~MockPlayer() {}
+    explicit MockPlayer(std::string) {}
+    virtual ~MockPlayer() {}
 
     MOCK_METHOD0(setComputerPlayer, void(), (override));
     MOCK_METHOD0(isComputerPlayer, bool(), (const override));
