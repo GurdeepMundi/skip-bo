@@ -5,7 +5,7 @@
    by Austin Ball
    CPSC3720
 */
-
+/*
 #include "Player.h"
 #include "DeckModel.h"
 #include "ArrPileModel.h"
@@ -40,3 +40,4 @@ class MockPlayer : public Player {
     MOCK_METHOD1(displayDiscard, void(bool), (override));
     MOCK_METHOD0(returnArrPile, ArrPileModel*(), (override));
 };
+*/

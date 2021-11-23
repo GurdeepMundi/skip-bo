@@ -14,6 +14,10 @@
 #include "PileModel.h"
 #include "CardModel.h"
 #include "gmock/gmock.h"
+#include "gtest/gtest.h"
+
+using ::testing::Expectation;
+using ::testing::Return;
 
 class MockCardGameController : public CardGameController {
  public:

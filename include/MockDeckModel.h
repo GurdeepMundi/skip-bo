@@ -2,15 +2,20 @@
    MockDeckModel.h
    Defines MockDeckModel
    Written on 22/11/2021
-   by Austin Ball
+   by Austin Ball, Gurdeep Singh
    CPSC3720
 */
 #ifndef MOCKDECKMODEL_H
 #define MOCKDECKMODEL_H
 
-#include "DeckModel.h"
+#include <DeckModel.h>
+#include <CardModel.h>
 #include <vector>
 #include <stack>
+#include "gtest/gtest.h"
+#include "gmock/gmock.h"
+using ::testing::Expectation;
+using ::testing::Return;
 
 using std::vector;
 using std::stack;
