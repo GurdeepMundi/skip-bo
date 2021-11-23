@@ -1,6 +1,6 @@
 /*
  * MockCardModel.h
- *
+ * skip-bo
  *  Created on: Nov. 22, 2021
  *      Author: Jackson Druhan
  */
