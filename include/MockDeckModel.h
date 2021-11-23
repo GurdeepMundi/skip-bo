@@ -19,7 +19,7 @@ using std::stack;
 class MockDeckModel : public DeckModel {
  public:
    explicit MockDeckModel() {}
-   virtual ~MockDoor() {}
+   virtual ~MockDeckModel() {}
     MOCK_METHOD0(shuffleDeck, void());
 /*    MOCK_METHOD0(getTopCard, CardModel*());
     MOCK_METHOD0(buildDeck, std::vector<CardModel*>());
