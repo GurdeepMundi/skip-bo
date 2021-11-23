@@ -26,6 +26,6 @@ class MockDeckModel : public DeckModel {
     MOCK_METHOD(CardModel*, getFirstCard, (), (override));
     MOCK_METHOD(void, addGarbageToDeck, (), (override));
     MOCK_METHOD(void, checksize, (), (override));
-    MOCK_METHOD(void, addBuildToGarbage, (stack<CardModel*>), ());
+    MOCK_METHOD(void, addBuildToGarbage, (stack<CardModel*>), (override));
 };
 #endif
