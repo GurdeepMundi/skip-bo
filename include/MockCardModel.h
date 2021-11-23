@@ -13,7 +13,7 @@
 #include "gmock/gmock.h"
 
 class MockCardModel : public CardModel {
-public:
+ public:
     explicit MockCardModel() : CardModel(2) {}
     virtual ~MockCardModel() {}
     MOCK_METHOD1(setNumber, void(int));
