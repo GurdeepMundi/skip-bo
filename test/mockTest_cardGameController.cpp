@@ -46,7 +46,7 @@ class GameControllerTest : public testing::Test {
   EXPECT_NO_THROW(CardModelController myGame(iv, p1, p2, d, arr));
 }*/
 
-TEST(GameControllerTest, DISABLED_gameStart) {
+TEST(GameControllerTest, gameStart) {
     //MockPlayer* p1;
     //MockPlayer* p2;// Mock Players
     MockDeckModel d;// Mock Deck
