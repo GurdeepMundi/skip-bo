@@ -34,6 +34,6 @@ class MockDeckModel : public DeckModel {
     MOCK_METHOD0(getFirstCard, CardModel*());
     MOCK_METHOD0(addGarbageToDeck, void());
     MOCK_METHOD0(checkSize, void());
-    MOCK_METHOD0(addBuildToGarbage, void(std::stack<CardModel*>));
+    MOCK_METHOD1(addBuildToGarbage, void(std::stack<CardModel*>));
 };
 #endif
