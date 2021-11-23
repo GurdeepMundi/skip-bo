@@ -17,15 +17,15 @@ using std::stack;
 
 class MockDeckModel : public DeckModel {
  public:
-    MOCK_METHOD(void, shuffleDeck, (), (override));
-    MOCK_METHOD(CardModel*, getTopCard, (), (override));
-    MOCK_METHOD(vector<CardModel*>, buildDeck, (), (override));
-    MOCK_METHOD(vector<CardModel*>, getGarbage, (), (override));
-    MOCK_METHOD(void, removeCardsDup, (int), (override));
-    MOCK_METHOD(int, getsize, (), (override));
-    MOCK_METHOD(CardModel*, getFirstCard, (), (override));
-    MOCK_METHOD(void, addGarbageToDeck, (), (override));
-    MOCK_METHOD(void, checksize, (), (override));
-    MOCK_METHOD(void, addBuildToGarbage, (stack<CardModel*>), ());
+    MOCK_METHOD(shuffleDeck, void(), (override));
+    MOCK_METHOD(getTopCard, CardModel*(), (override));
+    MOCK_METHOD(buildDeck, vector<CardModel*>(), (override));
+    MOCK_METHOD(getGarbage, vector<CardModel*>(), (override));
+    MOCK_METHOD1(removeCardsDup, void(int), (override));
+    MOCK_METHOD(getsize, int(), (override));
+    MOCK_METHOD(getFirstCard, CardModel*(), (override));
+    MOCK_METHOD(addGarbageToDeck, void(), (override));
+    MOCK_METHOD(checksize, void(), (override));
+    MOCK_METHOD1(addBuildToGarbage, void(stack<CardModel*>), ());
 };
 #endif

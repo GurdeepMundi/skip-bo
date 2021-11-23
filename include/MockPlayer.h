@@ -16,23 +16,23 @@
 
 class MockPlayer : public Player {
  public:
-    MOCK_METHOD(void, setComputerPlayer, (), (override));
-    MOCK_METHOD(bool, isComputerPlayer, (), (const override));
-    MOCK_METHOD(void, addToStock, (DeckModel*), (override));
-    MOCK_METHOD(unsigned int, handsize, (), (const override));
-    MOCK_METHOD(int, stocksize, (), (const override));
-    MOCK_METHOD(void, addCard, (CardModel*), (override));
-    MOCK_METHOD(CardModel*, useCard, (int), (const override));
-    MOCK_METHOD(CardModel*, usediscard, (int), (const override));
-    MOCK_METHOD(CardModel*, useStock, (int), (const override));
-    MOCK_METHOD(void, usingDiscard, (CardModel*, int), (const override));
-    MOCK_METHOD(void, removeCard, (int), (override));
-    MOCK_METHOD(void, deleteDiscardCard, (int), (override));
-    MOCK_METHOD(void, deleteStockCard, (), (override));
-    MOCK_METHOD(void, displayHand, (), (override));
-    MOCK_METHOD(HandModel*, returnHand, (), (override));
-    MOCK_METHOD(void, displayStock, (), (override));
-    MOCK_METHOD(PileModel*, returnStock, (), (override));
-    MOCK_METHOD(void, displayDiscard, (bool), (override));
-    MOCK_METHOD(ArrPileModel*, returnArrPile, (), (override));
+    MOCK_METHOD(setComputerPlayer, void(), (override));
+    MOCK_METHOD(isComputerPlayer, bool(), (const override));
+    MOCK_METHOD1(addToStock, void(DeckModel*), (override));
+    MOCK_METHOD(handsize, unsigned int(), (const override));
+    MOCK_METHOD(stocksize, int(), (const override));
+    MOCK_METHOD1(addCard, void(CardModel*), (override));
+    MOCK_METHOD1(useCard, CardModel*(int), (const override));
+    MOCK_METHOD1(usediscard, CardModel*(int), (const override));
+    MOCK_METHOD1(useStock, CardModel*(int), (const override));
+    MOCK_METHOD2(usingDiscard, void(CardModel*, int), (const override));
+    MOCK_METHOD1(removeCard, void(int), (override));
+    MOCK_METHOD1(deleteDiscardCard, void(int), (override));
+    MOCK_METHOD(deleteStockCard, void(), (override));
+    MOCK_METHOD(displayHand, void(), (override));
+    MOCK_METHOD(returnHand, HandModel*(), (override));
+    MOCK_METHOD(displayStock, void(), (override));
+    MOCK_METHOD(returnStock, PileModel*(), (override));
+    MOCK_METHOD1(displayDiscard, void(bool), (override));
+    MOCK_METHOD(returnArrPile, ArrPileModel*(), (override));
 };
