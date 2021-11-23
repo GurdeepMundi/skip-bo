@@ -60,6 +60,7 @@ TEST(GameControllerTest, gameStart) {
 //    Expectation p2GetsCards =
     //EXPECT_CALL(p2, addToStock()).Times(AtLeast(1));
 
-    CardGameController cont(new InputView(), new Player(), new Player(), &d, new ArrPileModel());
+    CardGameController cont(new InputView(), new Player(), new Player(), &d,
+     new ArrPileModel());
     cont.gameStart();
 }
