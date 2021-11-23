@@ -8,7 +8,7 @@
 #include <vector>
 
 class MockArrPileModel : public ArrPileModel {
-public:
+ public:
   MOCK_METHOD(PileModel*, getPile, (), (overide));
   MOCK_METHOD(std::vector<PileModel*>, buildPileArr, (), (overide));
   MOCK_METHOD(bool, insertCard, (CardModel*, int), (overide));
