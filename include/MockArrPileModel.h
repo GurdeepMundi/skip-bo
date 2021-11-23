@@ -16,13 +16,13 @@
 
 class MockArrPileModel : public ArrPileModel {
  public:
-  MOCK_METHOD(PileModel*, getPile, (int), (override));
-  MOCK_METHOD(std::vector<PileModel*>, buildPileArr, (), (override));
-  MOCK_METHOD(bool, insertCard, (CardModel*, int), (override));
-  MOCK_METHOD(CardModel*, usediscard, (int), (override));
-  MOCK_METHOD(void, popTopcard, (int), (override));
-  MOCK_METHOD(void, putCardInDiscard, (CardModel*, int), (override));
-  MOCK_METHOD(void, checkBuildSize, (DeckModel*), (override));
-  MOCK_METHOD(void, clearPile, (int), (override));
+  MOCK_METHOD1(getPile, PileModel*(int), (override));
+  MOCK_METHOD(buildPileArr, std::vector<PileModel*>(), (override));
+  MOCK_METHOD2(insertCard, bool(CardModel*, int), (override));
+  MOCK_METHOD1(usediscard, CardModel*(int), (override));
+  MOCK_METHOD1(popTopcard, void(int), (override));
+  MOCK_METHOD2(putCardInDiscard, void(CardModel*, int), (override));
+  MOCK_METHOD1(checkBuildSize, void(DeckModel*), (override));
+  MOCK_METHOD1(clearPile, void(int), (override));
 };
 #endif
