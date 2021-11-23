@@ -63,4 +63,3 @@ TEST(CardGameControllerTest, gameStart) {
     CardGameController cont(new InputView(), p1, p2, d, new ArrPileModel());
     EXPECT_TRUE(cont.gameStart());
 }
-*/
