@@ -25,7 +25,7 @@ class MockDeckModel : public DeckModel {
    explicit MockDeckModel() {}
    virtual ~MockDeckModel() {}
     MOCK_METHOD0(shuffleDeck, void());
-/*    MOCK_METHOD0(getTopCard, CardModel*());
+    MOCK_METHOD0(getTopCard, CardModel*());
     MOCK_METHOD0(buildDeck, std::vector<CardModel*>());
     MOCK_METHOD0(getDeck, std::vector<CardModel*>());
     MOCK_METHOD0(getGarbage, std::vector<CardModel*>());
@@ -34,6 +34,6 @@ class MockDeckModel : public DeckModel {
     MOCK_METHOD0(getFirstCard, CardModel*());
     MOCK_METHOD0(addGarbageToDeck, void());
     MOCK_METHOD0(checkSize, void());
-    MOCK_METHOD0(addBuildToGarbage, void(std::stack<CardModel*>));*/
+    MOCK_METHOD0(addBuildToGarbage, void(std::stack<CardModel*>));
 };
 #endif
