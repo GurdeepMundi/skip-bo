@@ -49,7 +49,7 @@ class GameControllerTest : public testing::Test {
 TEST(GameControllerTest, gameStart) {
     //MockPlayer* p1;
     //MockPlayer* p2;// Mock Players
-    MockDeckModel* d;// Mock Deck
+    MockDeckModel d;// Mock Deck
 //    MockArrPileModel b;// Mock Build Piles
 //    Expectation deckBuilt =
     EXPECT_CALL(d, buildDeck()).Times(AtLeast(1));
