@@ -15,7 +15,7 @@
 #include <vector>
 
 class MockArrPileModel : public ArrPileModel {
-public:
+  public:
   MOCK_METHOD(PileModel*, getPile, (int), (override));
   MOCK_METHOD(std::vector<PileModel*>, buildPileArr, (), (override));
   MOCK_METHOD(bool, insertCard, (CardModel*, int), (override));
