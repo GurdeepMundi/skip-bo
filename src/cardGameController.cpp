@@ -8,32 +8,34 @@
 #include <iostream>
 
 
-CardGameController::CardGameController(InputView* iv) : userInput(iv) { }
+CardGameController::CardGameController(InputView* iv, Player* pl1, Player* pl2,
+                                       DeckModel* d, ArrPileModel* b) :
+    userInput(iv), p1(pl1), p2(pl2), deck(d), building(b) { }
 
 CardGameController::~CardGameController() {
-  delete userInput;
+    delete userInput, p1, p2, deck, building;
 }
 
 void CardGameController::gameStart() {
-  Player* p1 = new Player;
-  Player* p2 = new Player;
-  DeckModel* deck = new DeckModel;
-  ArrPileModel* building = new ArrPileModel;
+    Player* p1 = this->p1;
+    Player* p2 = this->p2;
+    DeckModel* deck = this->deck;
+    ArrPileModel* building = this->building;
 
-  deckSetup(deck);
-  playerSetup(p1, deck);
-  playerSetup(p2, deck);
-  help(12);
-  do {
-    playCards(p1, p2, deck, building);
-    opponentTurn(p2, p1, deck, building);
-  } while (p1->stocksize() != 0 || p2->stocksize() != 0);
+    deckSetup(deck);
+    playerSetup(p1, deck);
+    playerSetup(p2, deck);
+    help(12);
+    do {
+        playCards(p1, p2, deck, building);
+        opponentTurn(p2, p1, deck, building);
+    } while (p1->stocksize() != 0 || p2->stocksize() != 0);
 
-  if (p1->stocksize() == 0) {
-    std::cout << "Player 1 won" << std::endl;
-  } else {
-    std::cout << "Player 2 won" << std::endl;
-  }
+    if (p1->stocksize() == 0) {
+        std::cout << "Player 1 won" << std::endl;
+    } else {
+        std::cout << "Player 2 won" << std::endl;
+    }
 }
 
 void CardGameController::deckSetup(DeckModel* deck) {

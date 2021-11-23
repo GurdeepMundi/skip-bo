@@ -24,61 +24,61 @@ class DeckModel {
     /**
     * Destructor
     */
-    ~DeckModel();
+    virtual ~DeckModel();
 
     /**
     * Shuffes a deck
     */
-    void shuffleDeck();
+    virtual void shuffleDeck();
 
     /**
     * Gets the card on top of the pile
     * @return a CardModel*
     */
-    CardModel* getTopCard();
+    virtual CardModel* getTopCard();
 
     /**
     * Builds a deck of cards
     * @return vector<CardModel*>
     */
-    std::vector<CardModel*> buildDeck();
+    virtual std::vector<CardModel*> buildDeck();
 
     /**
     * Gets a deck of cards
     * @return vector<CardModel*>
     */
-    std::vector<CardModel*> getDeck();
+    virtual std::vector<CardModel*> getDeck();
 
     /**
     * Gets a vector of garbage cards
     * @return vector<CardModel*>
     */
-    std::vector<CardModel*> getGarbage();
+    virtual std::vector<CardModel*> getGarbage();
 
     /**
     * Removes all cards from the deck.?
     */
-    void removeCardsDup(int);
+    virtual void removeCardsDup(int);
 
     /**
     * Gets the current size of a deck
     * @return int
     */
-    int getsize();
+    virtual int getsize();
 
-    CardModel* getFirstCard();
+    virtual CardModel* getFirstCard();
 
     /**
     * Re-adds the garbade pile to the deck
     */
-    void addGarbageToDeck();
+    virtual void addGarbageToDeck();
 
     /**
     * Checks the size of the deck
     */
-    void checkSize();
+    virtual void checkSize();
 
-    void addBuildToGarbage(std::stack<CardModel*>);
+    virtual void addBuildToGarbage(std::stack<CardModel*>);
 
  private:
     std::vector<CardModel*> currentDeck;

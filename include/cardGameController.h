@@ -21,7 +21,7 @@ class CardGameController {
     /**
     * A card game (Constructor)
     */
-    CardGameController(InputView*);
+    CardGameController(InputView*, Player*, Player*, DeckModel*, ArrPileModel*);
     /**
     * Destructor
     */
@@ -64,5 +64,9 @@ class CardGameController {
 
  private:
     InputView* userInput;
+    Player* p1;
+    Player* p2;
+    DeckModel* deck;
+    ArrPileModel* building;
 };
 #endif

@@ -10,7 +10,8 @@
 #include "PileModel.h"
 #include "ArrPileModel.h"
 #include "arrPileView.h"
-
+#include "DeckModel.h"
+#include "Player.h"
 #include "cardGameController.h"
 #include <iostream>
 #include <string>
@@ -19,7 +20,12 @@
 #include <stack>
 
 int main() {
-    CardGameController a(new InputView());
+    // Player* p1 = new Player;
+    // Player* p2 = new Player;
+    // DeckModel* deck = new DeckModel;
+    // ArrPileModel* building = new ArrPileModel;
+    CardGameController a(new InputView(), new Player(), new Player(),
+                         new DeckModel(), new ArrPileModel());
     a.gameStart();
     char c;
     std::cin >> c;
