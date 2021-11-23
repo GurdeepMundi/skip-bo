@@ -53,7 +53,7 @@ TEST_F(arrPileModelTest, insertCard) {
   delete c, c2, c3, c4;
 }
 
-TEST_F(arrPileModelTest, useDiscard) {
+TEST_F(arrPileModelTest, DISABLED_useDiscard) {
   CardModel* c = new CardModel(1);
   CardModel* c2 = new CardModel(2);
   EXPECT_EQ(myArray->usediscard(1)->getNumber(), 20);
@@ -63,7 +63,7 @@ TEST_F(arrPileModelTest, useDiscard) {
   delete c, c2;
 }
 
-TEST_F(arrPileModelTest, popTopCard) {
+TEST_F(arrPileModelTest, DISABLED_popTopCard) {
   CardModel* c = new CardModel(1);
   CardModel* c2 = new CardModel(2);
   myArray->insertCard(c, 2);
