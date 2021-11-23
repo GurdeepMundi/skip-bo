@@ -20,26 +20,26 @@ class CardModel {
     /**
     * Destructor
     */
-    virtual ~CardModel();
+    ~CardModel();
 
     /**
     * Sets the number of a card
     * @param integer value on the card
     * @return an integer
     */
-    virtual void setNumber(int);
+    void setNumber(int);
 
     /**
     * Gets the card number
     * @return an integer, the card number.
     */
-    virtual int getNumber();
+    int getNumber();
 
     /**
     * Checks if card is Skip-Bo card (int == 0)
     * @return a boolean, true if skip-bo, false if not
     */
-    virtual bool isSkipBo(CardModel);
+    bool isSkipBo(CardModel);
 
 
  private:

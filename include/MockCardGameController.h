@@ -21,32 +21,25 @@ using ::testing::Return;
 
 class MockCardGameController : public CardGameController {
  public:
-    explicit MockCardGameController(InputView*, Player*, Player*, DeckModel*,
-            ArrPileModel*) {}
-    virtual ~MockCardGameController() {}
+  explicit MockCardGameController() {}
+  virtual ~MockCardGameController() {}
+  MOCK_METHOD0(gameStart, void());
+  MOCK_METHOD1(deckSetup, void());
+  MOCK_METHOD2(playerSetup, void());
+  MOCK_METHOD4(displayBoard, void());
+  MOCK_METHOD4(opponentTurn, void());
+  MOCK_METHOD4(playCards, void());
+  MOCK_METHOD2(dealHand, void());
+  MOCK_METHOD3(handPlay, void());
+  MOCK_METHOD3(discardPlay, void());
+  MOCK_METHOD3(stockPlay, void());
+  MOCK_METHOD2(discardingCard, bool());
+    /* MOCK_METHOD(bool, addingToDiscard, (Player*, Player*, CardModel*, int),
+       (override)); */
 
-    MOCK_METHOD0(gameStart, void(), (override));
-    MOCK_METHOD1(deckSetup, void(DeckModel*), (override));
-    MOCK_METHOD2(playerSetup, void(Player*, DeckModel*), (override));
-    MOCK_METHOD4(displayBoard, void(Player*, Player*, DeckModel*,
-                                     ArrPileModel*), (override));
-    MOCK_METHOD4(opponentTurn, void(Player*, Player*, DeckModel*,
-                                     ArrPileModel*), (override));
-    MOCK_METHOD4(playCards, void(Player*, Player*, DeckModel*, ArrPileModel*),
-                (override));
-    MOCK_METHOD2(dealHand, void(Player*, DeckModel*), (override));
-    MOCK_METHOD3(handPlay, void(Player*, ArrPileModel*, int), (override));
-    MOCK_METHOD3(discardPlay, void(Player*, ArrPileModel*, int), (override));
-    MOCK_METHOD3(stockPlay, void(Player*, ArrPileModel*, int), (override));
-    MOCK_METHOD2(discardingCard, bool(Player*, int), (override));
-    /* MOCK_METHOD4(addingToDiscard,
-    bool(Player*, Player*, CardModel*, int),(override)); */
-    MOCK_METHOD3(addingToPiles, bool(ArrPileModel*, CardModel*, int),
-                (override));
-    MOCK_METHOD3(discardPilesPick, void(Player*, CardModel*, int),
-                (override));
-    MOCK_METHOD2(checkBuildSize, void(ArrPileModel*, DeckModel*),
-                (override));
-    MOCK_METHOD1(help, void(int), (override));
-    MOCK_METHOD1(leave, void(int), (override));
+  MOCK_METHOD3(addingToPiles, bool());
+  MOCK_METHOD3(discardPilesPick, void());
+  MOCK_METHOD2(checkBuildSize, void());
+  MOCK_METHOD1(help, void());
+  MOCK_METHOD1(leave, void());
 };
