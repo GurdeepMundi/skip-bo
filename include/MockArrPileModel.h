@@ -9,6 +9,7 @@
 #ifndef MOCKARRPILEMODEL_H
 #define MOCKARRPILEMODEL_H
 
+#include "ArrPileModel.h"
 #include "CardModel.h"
 #include "PileModel.h"
 #include "DeckModel.h"
@@ -16,9 +17,9 @@
 
 class MockArrPileModel : public ArrPileModel {
  public:
-  explicit MockArrPileModel();
-  virtual ~MockArrPileModel();
-  
+  explicit MockArrPileModel() {}
+  virtual ~MockArrPileModel() {}
+
   MOCK_METHOD1(getPile, PileModel*(int), (override));
   MOCK_METHOD0(buildPileArr, std::vector<PileModel*>(), (override));
   MOCK_METHOD2(insertCard, bool(CardModel*, int), (override));

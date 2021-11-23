@@ -18,8 +18,8 @@
 class MockCardGameController : public CardGameController {
  public:
    explicit MockCardGameController(InputView*, Player*, Player*, DeckModel*,
-     ArrPileModel*);
-   virtual ~MockCardGameController();
+     ArrPileModel*) {}
+   virtual ~MockCardGameController() {}
 
     MOCK_METHOD0(gameStart, void(), (override));
     MOCK_METHOD1(deckSetup, void(DeckModel*), (override));

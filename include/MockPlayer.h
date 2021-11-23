@@ -17,8 +17,8 @@
 
 class MockPlayer : public Player {
  public:
-   explicit MockPlayer(std::string);
-   virtual ~MockPlayer();
+   explicit MockPlayer(std::string) {}
+   virtual ~MockPlayer() {}
 
     MOCK_METHOD0(setComputerPlayer, void(), (override));
     MOCK_METHOD0(isComputerPlayer, bool(), (const override));

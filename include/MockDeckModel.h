@@ -17,8 +17,8 @@ using std::stack;
 
 class MockDeckModel : public DeckModel {
  public:
-   explicit MockDeckModel();
-   virtual ~MockDeckModel();
+   explicit MockDeckModel() {}
+   virtual ~MockDeckModel() {}
 
     MOCK_METHOD0(shuffleDeck, void(), (override));
     MOCK_METHOD0(getTopCard, CardModel*(), (override));
