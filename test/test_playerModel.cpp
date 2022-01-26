@@ -1,7 +1,7 @@
 /**
    test_playerModel
    Tests Player class
-   Written by Austin Ball
+   Written by Austin Ball, Gurdeep Singh
    on 12/11/2021
    CPSC3720
 */
